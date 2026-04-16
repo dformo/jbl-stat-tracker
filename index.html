@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JBL Rosters</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background: #f5f5f5;
+    }
+
+    h1 {
+        margin-bottom: 10px;
+    }
+
+    select {
+        padding: 8px;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+    }
+
+    th, td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        cursor: pointer;
+        background: #eee;
+    }
+
+    tr:hover {
+        background: #f0f8ff;
+    }
+</style>
+</head>
+<body>
+
+<h1>JBL Team Rosters</h1>
+
+<label for="teamSelect"><strong>Select Team:</strong></label>
+<br>
+<select id="teamSelect"></select>
+
+<table id="playersTable">
+    <thead>
+        <tr>
+            <th data-sort="name">Player Name</th>
+            <th data-sort="position">Position</th>
+            <th data-sort="mlb_id">MLB ID</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script>
+let rosters = [];
+let currentSort = { column: null, asc: true };
+
+async function loadRosters() {
+    const response = await fetch("tools/rosters.json");
+    rosters = (await response.json()).teams;
+
+    populateTeamSelector();
+}
+
+function populateTeamSelector() {
+    const select = document.getElementById("teamSelect");
+
+    rosters.forEach(team => {
+        const option = document.createElement("option");
+        option.value = team.team_code;
+        option.textContent = `${team.team_name} (${team.team_code})`;
+        select.appendChild(option);
+    });
+
+    select.addEventListener("change", () => renderTeam(select.value));
+
+    // Load first team by default
+    renderTeam(rosters[0].team_code);
+}
+
+function renderTeam(teamCode) {
+    const team = rosters.find(t => t.team_code === teamCode);
+    const tbody = document.querySelector("#playersTable tbody");
+    tbody.innerHTML = "";
+
+    team.players.forEach(player => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${player.name}</td>
+            <td>${player.position}</td>
+            <td>${player.mlb_id}</td>
+        `;
+
+        tbody.appendChild(row);
+    });
+}
+
+function sortTable(column) {
+    const teamCode = document.getElementById("teamSelect").value;
+    const team = rosters.find(t => t.team_code === teamCode);
+
+    if (currentSort.column === column) {
+        currentSort.asc = !currentSort.asc;
+    } else {
+        currentSort.column = column;
+        currentSort.asc = true;
+    }
+
+    team.players.sort((a, b) => {
+        let valA = a[column] ?? "";
+        let valB = b[column] ?? "";
+
+        if (typeof valA === "number" && typeof valB === "number") {
+            return currentSort.asc ? valA - valB : valB - valA;
+        }
+
+        return currentSort.asc
+            ? String(valA).localeCompare(String(valB))
+            : String(valB).localeCompare(String(valA));
+    });
+
+    renderTeam(teamCode);
+}
+
+document.querySelectorAll("th").forEach(th => {
+    th.addEventListener("click", () => sortTable(th.dataset.sort));
+});
+
+loadRosters();
+</script>
+
+</body>
+</html>

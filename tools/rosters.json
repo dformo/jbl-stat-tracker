@@ -1,0 +1,3311 @@
+{
+  "teams": [
+    {
+      "team_name": "BANFF BISON",
+      "team_code": "BA",
+      "division": "EASTERN",
+      "players": [
+        {
+          "name": "Logan Allen",
+          "position": "Starter",
+          "mlb_id": 671106
+        },
+        {
+          "name": "Ryan Bergert",
+          "position": "Starter",
+          "mlb_id": 686701
+        },
+        {
+          "name": "eur Nathan Eovaldi",
+          "position": "Starter",
+          "mlb_id": 543135
+        },
+        {
+          "name": "Grant Holmes",
+          "position": "Starter",
+          "mlb_id": 656550
+        },
+        {
+          "name": "George Kirby",
+          "position": "Starter",
+          "mlb_id": 669923
+        },
+        {
+          "name": "Jacob Lopez",
+          "position": "Starter",
+          "mlb_id": 682052
+        },
+        {
+          "name": "Bryce Miller",
+          "position": "Starter",
+          "mlb_id": 682243
+        },
+        {
+          "name": "Chase Petty",
+          "position": "Starter",
+          "mlb_id": 695534
+        },
+        {
+          "name": "Brandon Walter",
+          "position": "Starter",
+          "mlb_id": 687888
+        },
+        {
+          "name": "Randy Vasquez",
+          "position": "Starter",
+          "mlb_id": 681190
+        },
+        {
+          "name": "Nic Enright",
+          "position": "Reliever",
+          "mlb_id": 663671
+        },
+        {
+          "name": "Jose Ferrer",
+          "position": "Reliever",
+          "mlb_id": 678606
+        },
+        {
+          "name": "Brenan Hanifee",
+          "position": "Reliever",
+          "mlb_id": 669724
+        },
+        {
+          "name": "Brant Hurter",
+          "position": "Reliever",
+          "mlb_id": 676428
+        },
+        {
+          "name": "Jared Koenig",
+          "position": "Reliever",
+          "mlb_id": 657649
+        },
+        {
+          "name": "Justin Lawrence",
+          "position": "Reliever",
+          "mlb_id": 664875
+        },
+        {
+          "name": "Daniel Palencia",
+          "position": "Reliever",
+          "mlb_id": 694037
+        },
+        {
+          "name": "Bradgley Rodriguez",
+          "position": "Reliever",
+          "mlb_id": 699134
+        },
+        {
+          "name": "Manuel Rodriguez",
+          "position": "Reliever",
+          "mlb_id": 655889
+        },
+        {
+          "name": "Abner Uribe",
+          "position": "Reliever",
+          "mlb_id": 682842
+        },
+        {
+          "name": "Kyle Higashioka",
+          "position": "Catcher",
+          "mlb_id": 543309
+        },
+        {
+          "name": "Alejandro Kirk",
+          "position": "Catcher",
+          "mlb_id": 672386
+        },
+        {
+          "name": "Rafael Devers",
+          "position": "Designated Hitter",
+          "mlb_id": 646240
+        },
+        {
+          "name": "Bryce Eldridge",
+          "position": "Designated Hitter",
+          "mlb_id": 805811
+        },
+        {
+          "name": "Brice Matthews",
+          "position": "Designated Hitter",
+          "mlb_id": 694728
+        },
+        {
+          "name": "Zac Veen",
+          "position": "Designated Hitter",
+          "mlb_id": 691728
+        },
+        {
+          "name": "Addison Barger",
+          "position": "Infielders",
+          "mlb_id": 680718
+        },
+        {
+          "name": "Xavier Edwards",
+          "position": "Infielders",
+          "mlb_id": 669364
+        },
+        {
+          "name": "Nolan Gorman",
+          "position": "Infielders",
+          "mlb_id": 669357
+        },
+        {
+          "name": "Matt McLain",
+          "position": "Infielders",
+          "mlb_id": 680574
+        },
+        {
+          "name": "Geraldo Perdomo",
+          "position": "Infielders",
+          "mlb_id": 672695
+        },
+        {
+          "name": "Ben Rice",
+          "position": "Infielders",
+          "mlb_id": 700250
+        },
+        {
+          "name": "Andrew Vaughn",
+          "position": "Infielders",
+          "mlb_id": 683734
+        },
+        {
+          "name": "Will Benson",
+          "position": "Outfielders",
+          "mlb_id": 666181
+        },
+        {
+          "name": "Jackson Chourio",
+          "position": "Outfielders",
+          "mlb_id": 694192
+        },
+        {
+          "name": "Trent Grisham",
+          "position": "Outfielders",
+          "mlb_id": 663757
+        },
+        {
+          "name": "Austin Hays",
+          "position": "Outfielders",
+          "mlb_id": 669720
+        },
+        {
+          "name": "Steven Kwan",
+          "position": "Outfielders",
+          "mlb_id": 680757
+        },
+        {
+          "name": "Ramon Laureano",
+          "position": "Outfielders",
+          "mlb_id": 657656
+        },
+        {
+          "name": "Javier Sanoja",
+          "position": "Outfielders",
+          "mlb_id": 691594
+        }
+      ]
+    },
+    {
+      "team_name": "BAY CREEK WEAZELS",
+      "team_code": "BC",
+      "division": "EASTERN",
+      "players": [
+        {
+          "name": "Brayan Bello",
+          "position": "Starter",
+          "mlb_id": 678394
+        },
+        {
+          "name": "Kris Bubic",
+          "position": "Starter",
+          "mlb_id": 663460
+        },
+        {
+          "name": "Jack Flaherty",
+          "position": "Starter",
+          "mlb_id": 656427
+        },
+        {
+          "name": "Michael King",
+          "position": "Starter",
+          "mlb_id": 650633
+        },
+        {
+          "name": "Jacob Misiorowski",
+          "position": "Starter",
+          "mlb_id": 694819
+        },
+        {
+          "name": "Freddy Peralta",
+          "position": "Starter",
+          "mlb_id": 642547
+        },
+        {
+          "name": "Jose Soriano",
+          "position": "Starter",
+          "mlb_id": 667755
+        },
+        {
+          "name": "Simeon Woods Richardson",
+          "position": "Starter",
+          "mlb_id": 680573
+        },
+        {
+          "name": "A.J. Blubaugh",
+          "position": "Reliever",
+          "mlb_id": 805123
+        },
+        {
+          "name": "Brock Burke",
+          "position": "Reliever",
+          "mlb_id": 656271
+        },
+        {
+          "name": "Taylor Clarke",
+          "position": "Reliever",
+          "mlb_id": 664199
+        },
+        {
+          "name": "Ryan Helsley",
+          "position": "Reliever",
+          "mlb_id": 664854
+        },
+        {
+          "name": "Kyle Leahy",
+          "position": "Reliever",
+          "mlb_id": 681517
+        },
+        {
+          "name": "Tyler Phillips",
+          "position": "Reliever",
+          "mlb_id": 663969
+        },
+        {
+          "name": "Erik Sabrowski",
+          "position": "Reliever",
+          "mlb_id": 681870
+        },
+        {
+          "name": "Alex Vesia",
+          "position": "Reliever",
+          "mlb_id": 681911
+        },
+        {
+          "name": "Drake Baldwin",
+          "position": "Catcher",
+          "mlb_id": 686948
+        },
+        {
+          "name": "Gabriel Moreno",
+          "position": "Catcher",
+          "mlb_id": 672515
+        },
+        {
+          "name": "Pedro Pages",
+          "position": "Catcher",
+          "mlb_id": 686780
+        },
+        {
+          "name": "Vaughn Grissom",
+          "position": "Designated Hitter",
+          "mlb_id": 687093
+        },
+        {
+          "name": "C.J. Kayfus",
+          "position": "Designated Hitter",
+          "mlb_id": 692216
+        },
+        {
+          "name": "Endy Rodriguez",
+          "position": "Designated Hitter",
+          "mlb_id": 682848
+        },
+        {
+          "name": "Ozzie Albies",
+          "position": "Infielders",
+          "mlb_id": 645277
+        },
+        {
+          "name": "Nolan Arenado",
+          "position": "Infielders",
+          "mlb_id": 571448
+        },
+        {
+          "name": "Mookie Betts",
+          "position": "Infielders",
+          "mlb_id": 605141
+        },
+        {
+          "name": "Bo Bichette",
+          "position": "Infielders",
+          "mlb_id": 666182
+        },
+        {
+          "name": "Elly De La Cruz",
+          "position": "Infielders",
+          "mlb_id": 682829
+        },
+        {
+          "name": "Yandy Diaz",
+          "position": "Infielders",
+          "mlb_id": 650490
+        },
+        {
+          "name": "Jackson Holliday",
+          "position": "Infielders",
+          "mlb_id": 702616
+        },
+        {
+          "name": "Brooks Lee",
+          "position": "Infielders",
+          "mlb_id": 686797
+        },
+        {
+          "name": "Tyler Locklear",
+          "position": "Infielders",
+          "mlb_id": 682988
+        },
+        {
+          "name": "Brice Turang",
+          "position": "Infielders",
+          "mlb_id": 668930
+        },
+        {
+          "name": "Mark Vientos",
+          "position": "Infielders",
+          "mlb_id": 668901
+        },
+        {
+          "name": "Jo Adell",
+          "position": "Outfielders",
+          "mlb_id": 666176
+        },
+        {
+          "name": "Michael Harris",
+          "position": "Outfielders",
+          "mlb_id": 671739
+        },
+        {
+          "name": "Jung Hoo Lee",
+          "position": "Outfielders",
+          "mlb_id": 808982
+        },
+        {
+          "name": "Noelvi Marte",
+          "position": "Outfielders",
+          "mlb_id": 682622
+        },
+        {
+          "name": "Juan Soto",
+          "position": "Outfielders",
+          "mlb_id": 665742
+        },
+        {
+          "name": "Alek Thomas",
+          "position": "Outfielders",
+          "mlb_id": 677950
+        }
+      ]
+    },
+    {
+      "team_name": "COTTAGE GROVE PIGS",
+      "team_code": "CG",
+      "division": "EASTERN",
+      "players": [
+        {
+          "name": "Lucas Giolito",
+          "position": "Starter",
+          "mlb_id": 608337
+        },
+        {
+          "name": "Clay Holmes",
+          "position": "Starter",
+          "mlb_id": 605280
+        },
+        {
+          "name": "Jackson Jobe",
+          "position": "Starter",
+          "mlb_id": 695549
+        },
+        {
+          "name": "Seth Lugo",
+          "position": "Starter",
+          "mlb_id": 607625
+        },
+        {
+          "name": "Max Meyer",
+          "position": "Starter",
+          "mlb_id": 676974
+        },
+        {
+          "name": "Nick Pivetta",
+          "position": "Starter",
+          "mlb_id": 601713
+        },
+        {
+          "name": "Drew Rasmussen",
+          "position": "Starter",
+          "mlb_id": 656876
+        },
+        {
+          "name": "Colin Rea",
+          "position": "Starter",
+          "mlb_id": 607067
+        },
+        {
+          "name": "Grayson Rodriguez",
+          "position": "Starter",
+          "mlb_id": 680570
+        },
+        {
+          "name": "Gavin Stone",
+          "position": "Starter",
+          "mlb_id": 694813
+        },
+        {
+          "name": "Justin Verlander",
+          "position": "Starter",
+          "mlb_id": 434378
+        },
+        {
+          "name": "Ryan Weathers",
+          "position": "Starter",
+          "mlb_id": 677960
+        },
+        {
+          "name": "Aaron Ashby",
+          "position": "Reliever",
+          "mlb_id": 676879
+        },
+        {
+          "name": "Emmanuel Clase",
+          "position": "Reliever",
+          "mlb_id": 661403
+        },
+        {
+          "name": "Garrett Cleavinger",
+          "position": "Reliever",
+          "mlb_id": 664076
+        },
+        {
+          "name": "Tim Hill",
+          "position": "Reliever",
+          "mlb_id": 657612
+        },
+        {
+          "name": "Steven Matz",
+          "position": "Reliever",
+          "mlb_id": 571927
+        },
+        {
+          "name": "Shohei Ohtani",
+          "position": "Reliever",
+          "mlb_id": 660271
+        },
+        {
+          "name": "Mike Vasil",
+          "position": "Reliever",
+          "mlb_id": 678024
+        },
+        {
+          "name": "Greg Weissert",
+          "position": "Reliever",
+          "mlb_id": 669711
+        },
+        {
+          "name": "Francisco Alvarez",
+          "position": "Catcher",
+          "mlb_id": 682626
+        },
+        {
+          "name": "Tyler Heineman",
+          "position": "Catcher",
+          "mlb_id": 623168
+        },
+        {
+          "name": "Luis Torrens",
+          "position": "Catcher",
+          "mlb_id": 620443
+        },
+        {
+          "name": "Wander Franco",
+          "position": "Designated Hitter",
+          "mlb_id": 677551
+        },
+        {
+          "name": "Jace Jung",
+          "position": "Designated Hitter",
+          "mlb_id": 690291
+        },
+        {
+          "name": "Jordan Lawlar",
+          "position": "Designated Hitter",
+          "mlb_id": 691783
+        },
+        {
+          "name": "Garrett Mitchell",
+          "position": "Designated Hitter",
+          "mlb_id": 669003
+        },
+        {
+          "name": "Willy Adames",
+          "position": "Infielders",
+          "mlb_id": 642715
+        },
+        {
+          "name": "Pete Alonso",
+          "position": "Infielders",
+          "mlb_id": 624413
+        },
+        {
+          "name": "Spencer Horwitz",
+          "position": "Infielders",
+          "mlb_id": 687462
+        },
+        {
+          "name": "Brandon Lowe",
+          "position": "Infielders",
+          "mlb_id": 664040
+        },
+        {
+          "name": "Marcelo Mayer",
+          "position": "Infielders",
+          "mlb_id": 691785
+        },
+        {
+          "name": "Joey Ortiz",
+          "position": "Infielders",
+          "mlb_id": 687401
+        },
+        {
+          "name": "Jose Ramirez",
+          "position": "Infielders",
+          "mlb_id": 608070
+        },
+        {
+          "name": "Jordan Beck",
+          "position": "Outfielders",
+          "mlb_id": 687597
+        },
+        {
+          "name": "Alec Burleson",
+          "position": "Outfielders",
+          "mlb_id": 676475
+        },
+        {
+          "name": "Evan Carter",
+          "position": "Outfielders",
+          "mlb_id": 694497
+        },
+        {
+          "name": "Jurickson Profar",
+          "position": "Outfielders",
+          "mlb_id": 595777
+        },
+        {
+          "name": "George Springer",
+          "position": "Outfielders",
+          "mlb_id": 543807
+        },
+        {
+          "name": "Kyle Stowers",
+          "position": "Outfielders",
+          "mlb_id": 669065
+        }
+      ]
+    },
+    {
+      "team_name": "DANE COUNTY",
+      "team_code": "DC",
+      "division": "EASTERN",
+      "players": [
+        {
+          "name": "Hunter Brown",
+          "position": "Starter",
+          "mlb_id": 686613
+        },
+        {
+          "name": "Corbin Burnes",
+          "position": "Starter",
+          "mlb_id": 669203
+        },
+        {
+          "name": "Chase Dollander",
+          "position": "Starter",
+          "mlb_id": 801403
+        },
+        {
+          "name": "Brandon Pfaadt",
+          "position": "Starter",
+          "mlb_id": 694297
+        },
+        {
+          "name": "Dustin May",
+          "position": "Starter",
+          "mlb_id": 669160
+        },
+        {
+          "name": "Nolan McLean",
+          "position": "Starter",
+          "mlb_id": 690997
+        },
+        {
+          "name": "Ryne Nelson",
+          "position": "Starter",
+          "mlb_id": 669194
+        },
+        {
+          "name": "Tarik Skubal",
+          "position": "Starter",
+          "mlb_id": 669373
+        },
+        {
+          "name": "Jonah Tong",
+          "position": "Starter",
+          "mlb_id": 804636
+        },
+        {
+          "name": "Framber Valdez",
+          "position": "Starter",
+          "mlb_id": 664285
+        },
+        {
+          "name": "Brandon Woodruff",
+          "position": "Starter",
+          "mlb_id": 605540
+        },
+        {
+          "name": "Anthony Bender",
+          "position": "Reliever",
+          "mlb_id": 669622
+        },
+        {
+          "name": "Jack Dreyer",
+          "position": "Reliever",
+          "mlb_id": 676263
+        },
+        {
+          "name": "Griffin Jax",
+          "position": "Reliever",
+          "mlb_id": 643377
+        },
+        {
+          "name": "Daniel Lynch",
+          "position": "Reliever",
+          "mlb_id": 663738
+        },
+        {
+          "name": "Trevor Megill",
+          "position": "Reliever",
+          "mlb_id": 656730
+        },
+        {
+          "name": "Wandy Peralta",
+          "position": "Reliever",
+          "mlb_id": 593974
+        },
+        {
+          "name": "Tyler Rogers",
+          "position": "Reliever",
+          "mlb_id": 643511
+        },
+        {
+          "name": "Matt Strahm",
+          "position": "Reliever",
+          "mlb_id": 621381
+        },
+        {
+          "name": "Dillon Dingler",
+          "position": "Catcher",
+          "mlb_id": 693307
+        },
+        {
+          "name": "Ryan Jeffers",
+          "position": "Catcher",
+          "mlb_id": 680777
+        },
+        {
+          "name": "Dalton Rushing",
+          "position": "Catcher",
+          "mlb_id": 687221
+        },
+        {
+          "name": "Jhostynxon Garcia",
+          "position": "Designated Hitter",
+          "mlb_id": 691373
+        },
+        {
+          "name": "Alex Bregman",
+          "position": "Infielders",
+          "mlb_id": 608324
+        },
+        {
+          "name": "Michael Busch",
+          "position": "Infielders",
+          "mlb_id": 683737
+        },
+        {
+          "name": "Kyle Manzardo",
+          "position": "Infielders",
+          "mlb_id": 700932
+        },
+        {
+          "name": "Ketel Marte",
+          "position": "Infielders",
+          "mlb_id": 606466
+        },
+        {
+          "name": "Ronny Mauricio",
+          "position": "Infielders",
+          "mlb_id": 677595
+        },
+        {
+          "name": "Zach McKinstry",
+          "position": "Infielders",
+          "mlb_id": 656716
+        },
+        {
+          "name": "Corey Seager",
+          "position": "Infielders",
+          "mlb_id": 608369
+        },
+        {
+          "name": "Trea Turner",
+          "position": "Infielders",
+          "mlb_id": 607208
+        },
+        {
+          "name": "Jasson Dominguez",
+          "position": "Outfielders",
+          "mlb_id": 691176
+        },
+        {
+          "name": "Lourdes Gurriel",
+          "position": "Outfielders",
+          "mlb_id": 666971
+        },
+        {
+          "name": "Josh Lowe",
+          "position": "Outfielders",
+          "mlb_id": 666139
+        },
+        {
+          "name": "Tyler O'Neill",
+          "position": "Outfielders",
+          "mlb_id": 641933
+        },
+        {
+          "name": "Andy Pages",
+          "position": "Outfielders",
+          "mlb_id": 681624
+        },
+        {
+          "name": "Rob Refsnyder",
+          "position": "Outfielders",
+          "mlb_id": 608701
+        },
+        {
+          "name": "Davis Schneider",
+          "position": "Outfielders",
+          "mlb_id": 676914
+        },
+        {
+          "name": "Cam Smith",
+          "position": "Outfielders",
+          "mlb_id": 701358
+        },
+        {
+          "name": "Mike Tauchman",
+          "position": "Outfielders",
+          "mlb_id": 643565
+        }
+      ]
+    },
+    {
+      "team_name": "MINNESOTA BUFF",
+      "team_code": "MN",
+      "division": "EASTERN",
+      "players": [
+        {
+          "name": "Shane Baz",
+          "position": "Starter",
+          "mlb_id": 669358
+        },
+        {
+          "name": "Shane Bieber",
+          "position": "Starter",
+          "mlb_id": 669456
+        },
+        {
+          "name": "Sean Burke",
+          "position": "Starter",
+          "mlb_id": 680732
+        },
+        {
+          "name": "Edward Cabrera",
+          "position": "Starter",
+          "mlb_id": 665795
+        },
+        {
+          "name": "Luis H. Garcia",
+          "position": "Starter",
+          "mlb_id": 677651
+        },
+        {
+          "name": "Tyler Glasnow",
+          "position": "Starter",
+          "mlb_id": 607192
+        },
+        {
+          "name": "Shane McClanahan",
+          "position": "Starter",
+          "mlb_id": 663556
+        },
+        {
+          "name": "Joe Musgrove",
+          "position": "Starter",
+          "mlb_id": 605397
+        },
+        {
+          "name": "Bailey Ober",
+          "position": "Starter",
+          "mlb_id": 641927
+        },
+        {
+          "name": "Joe Ryan",
+          "position": "Starter",
+          "mlb_id": 657746
+        },
+        {
+          "name": "Chris Sale",
+          "position": "Starter",
+          "mlb_id": 519242
+        },
+        {
+          "name": "A.J. Smith-Shawver",
+          "position": "Starter",
+          "mlb_id": 700363
+        },
+        {
+          "name": "Blake Snell",
+          "position": "Starter",
+          "mlb_id": 605483
+        },
+        {
+          "name": "Bubba Chandler",
+          "position": "Reliever",
+          "mlb_id": 696149
+        },
+        {
+          "name": "Aroldis Chapman",
+          "position": "Reliever",
+          "mlb_id": 547973
+        },
+        {
+          "name": "Carlos Estevez",
+          "position": "Reliever",
+          "mlb_id": 608032
+        },
+        {
+          "name": "Ronny Henriquez",
+          "position": "Reliever",
+          "mlb_id": 678692
+        },
+        {
+          "name": "Tommy Nance",
+          "position": "Reliever",
+          "mlb_id": 667297
+        },
+        {
+          "name": "Randy Rodriquez",
+          "position": "Reliever",
+          "mlb_id": 678495
+        },
+        {
+          "name": "Edwin Uceta",
+          "position": "Reliever",
+          "mlb_id": 670955
+        },
+        {
+          "name": "Cole Winn",
+          "position": "Reliever",
+          "mlb_id": 668390
+        },
+        {
+          "name": "Cal Raleigh",
+          "position": "Catcher",
+          "mlb_id": 663728
+        },
+        {
+          "name": "Austin Wynns",
+          "position": "Catcher",
+          "mlb_id": 642851
+        },
+        {
+          "name": "Xander Bogaerts",
+          "position": "Infielders",
+          "mlb_id": 593428
+        },
+        {
+          "name": "Andres Gimenez",
+          "position": "Infielders",
+          "mlb_id": 665926
+        },
+        {
+          "name": "Romy Gonzalez",
+          "position": "Infielders",
+          "mlb_id": 663853
+        },
+        {
+          "name": "Bryce Harper",
+          "position": "Infielders",
+          "mlb_id": 547180
+        },
+        {
+          "name": "Ke'Bryan Hayes",
+          "position": "Infielders",
+          "mlb_id": 663647
+        },
+        {
+          "name": "Luke Keaschall",
+          "position": "Infielders",
+          "mlb_id": 807712
+        },
+        {
+          "name": "Royce Lewis",
+          "position": "Infielders",
+          "mlb_id": 668904
+        },
+        {
+          "name": "Bobby Witt Jr.",
+          "position": "Infielders",
+          "mlb_id": 677951
+        },
+        {
+          "name": "Nick Castellanos",
+          "position": "Outfielders",
+          "mlb_id": 592206
+        },
+        {
+          "name": "Brenton Doyle",
+          "position": "Outfielders",
+          "mlb_id": 686668
+        },
+        {
+          "name": "Gavin Lux",
+          "position": "Outfielders",
+          "mlb_id": 666158
+        },
+        {
+          "name": "Austin Martin",
+          "position": "Outfielders",
+          "mlb_id": 668885
+        },
+        {
+          "name": "Luis Robert",
+          "position": "Outfielders",
+          "mlb_id": 673357
+        },
+        {
+          "name": "Chandler Simpson",
+          "position": "Outfielders",
+          "mlb_id": 802415
+        },
+        {
+          "name": "Tyler Soderstrom",
+          "position": "Outfielders",
+          "mlb_id": 691016
+        },
+        {
+          "name": "Daulton Varsho",
+          "position": "Outfielders",
+          "mlb_id": 662139
+        },
+        {
+          "name": "Matt Wallner",
+          "position": "Outfielders",
+          "mlb_id": 670242
+        }
+      ]
+    },
+    {
+      "team_name": "SUSSEX RETRIEVERS",
+      "team_code": "SR",
+      "division": "EASTERN",
+      "players": [
+        {
+          "name": "Hunter Dobbins",
+          "position": "Starter",
+          "mlb_id": 690928
+        },
+        {
+          "name": "Emerson Hancock",
+          "position": "Starter",
+          "mlb_id": 676106
+        },
+        {
+          "name": "Merrill Kelly",
+          "position": "Starter",
+          "mlb_id": 518876
+        },
+        {
+          "name": "Johan Oviedo",
+          "position": "Starter",
+          "mlb_id": 670912
+        },
+        {
+          "name": "David Peterson",
+          "position": "Starter",
+          "mlb_id": 656849
+        },
+        {
+          "name": "Cristopher Sanchez",
+          "position": "Starter",
+          "mlb_id": 650911
+        },
+        {
+          "name": "Cam Schlitter",
+          "position": "Starter",
+          "mlb_id": 693645
+        },
+        {
+          "name": "Michael Wacha",
+          "position": "Starter",
+          "mlb_id": 608379
+        },
+        {
+          "name": "Edwin Diaz",
+          "position": "Reliever",
+          "mlb_id": 621242
+        },
+        {
+          "name": "Bryan King",
+          "position": "Reliever",
+          "mlb_id": 687911
+        },
+        {
+          "name": "Erik Miller",
+          "position": "Reliever",
+          "mlb_id": 669062
+        },
+        {
+          "name": "Carmen Mlodzinski",
+          "position": "Reliever",
+          "mlb_id": 669387
+        },
+        {
+          "name": "Adrian Morejon",
+          "position": "Reliever",
+          "mlb_id": 670970
+        },
+        {
+          "name": "David Morgan",
+          "position": "Reliever",
+          "mlb_id": 688158
+        },
+        {
+          "name": "Andrew Saalfrank",
+          "position": "Reliever",
+          "mlb_id": 685314
+        },
+        {
+          "name": "Garrett Whitlock",
+          "position": "Reliever",
+          "mlb_id": 676477
+        },
+        {
+          "name": "Devin Williams",
+          "position": "Reliever",
+          "mlb_id": 642207
+        },
+        {
+          "name": "William Contreras",
+          "position": "Catcher",
+          "mlb_id": 661388
+        },
+        {
+          "name": "Reese McGuire",
+          "position": "Catcher",
+          "mlb_id": 624512
+        },
+        {
+          "name": "J.T. Realmuto",
+          "position": "Catcher",
+          "mlb_id": 592663
+        },
+        {
+          "name": "Carlos Cortes",
+          "position": "Designated Hitter",
+          "mlb_id": 666126
+        },
+        {
+          "name": "Jahmai Jones",
+          "position": "Designated Hitter",
+          "mlb_id": 663330
+        },
+        {
+          "name": "Starling Marte",
+          "position": "Designated Hitter",
+          "mlb_id": 516782
+        },
+        {
+          "name": "Brent Rooker",
+          "position": "Designated Hitter",
+          "mlb_id": 667670
+        },
+        {
+          "name": "Miguel Andujar",
+          "position": "Infielders",
+          "mlb_id": 609280
+        },
+        {
+          "name": "Jake Bauers",
+          "position": "Infielders",
+          "mlb_id": 641343
+        },
+        {
+          "name": "Ernie Clement",
+          "position": "Infielders",
+          "mlb_id": 676391
+        },
+        {
+          "name": "Luis Garcia",
+          "position": "Infielders",
+          "mlb_id": 671277
+        },
+        {
+          "name": "Isiah Kiner-Falefa",
+          "position": "Infielders",
+          "mlb_id": 643396
+        },
+        {
+          "name": "Andrew Monasterio",
+          "position": "Infielders",
+          "mlb_id": 655316
+        },
+        {
+          "name": "Ryan O\u2019Hearn",
+          "position": "Infielders",
+          "mlb_id": 656811
+        },
+        {
+          "name": "Amed Rosario",
+          "position": "Infielders",
+          "mlb_id": 642708
+        },
+        {
+          "name": "Edmundo Sosa",
+          "position": "Infielders",
+          "mlb_id": 624641
+        },
+        {
+          "name": "Jared Triolo",
+          "position": "Infielders",
+          "mlb_id": 669707
+        },
+        {
+          "name": "Kerry Carpenter",
+          "position": "Outfielders",
+          "mlb_id": 681481
+        },
+        {
+          "name": "Tyler Freeman",
+          "position": "Outfielders",
+          "mlb_id": 671289
+        },
+        {
+          "name": "Sal Frelick",
+          "position": "Outfielders",
+          "mlb_id": 686217
+        },
+        {
+          "name": "Aaron Judge",
+          "position": "Outfielders",
+          "mlb_id": 592450
+        },
+        {
+          "name": "Brandon Lockridge",
+          "position": "Outfielders",
+          "mlb_id": 663604
+        },
+        {
+          "name": "Tyler Tolbert",
+          "position": "Outfielders",
+          "mlb_id": 686475
+        }
+      ]
+    },
+    {
+      "team_name": "TOKYO TYPHOONS",
+      "team_code": "TT",
+      "division": "EASTERN",
+      "players": [
+        {
+          "name": "Walker Buehler",
+          "position": "Starter",
+          "mlb_id": 621111
+        },
+        {
+          "name": "Sonny Gray",
+          "position": "Starter",
+          "mlb_id": 543243
+        },
+        {
+          "name": "Nick Lodolo",
+          "position": "Starter",
+          "mlb_id": 666157
+        },
+        {
+          "name": "Ryan Pepiot",
+          "position": "Starter",
+          "mlb_id": 686752
+        },
+        {
+          "name": "Brady Singer",
+          "position": "Starter",
+          "mlb_id": 663903
+        },
+        {
+          "name": "Logan Webb",
+          "position": "Starter",
+          "mlb_id": 657277
+        },
+        {
+          "name": "Hayden Birdsong",
+          "position": "Reliever",
+          "mlb_id": 806185
+        },
+        {
+          "name": "Danny Coulombe",
+          "position": "Reliever",
+          "mlb_id": 543056
+        },
+        {
+          "name": "Kyle Finnegan",
+          "position": "Reliever",
+          "mlb_id": 640448
+        },
+        {
+          "name": "Robert Gasser",
+          "position": "Reliever",
+          "mlb_id": 688107
+        },
+        {
+          "name": "Luis Guerrero",
+          "position": "Reliever",
+          "mlb_id": 692285
+        },
+        {
+          "name": "Tim Herrin",
+          "position": "Reliever",
+          "mlb_id": 682120
+        },
+        {
+          "name": "Pierce Johnson",
+          "position": "Reliever",
+          "mlb_id": 572955
+        },
+        {
+          "name": "Ryan Johnson",
+          "position": "Reliever",
+          "mlb_id": 696270
+        },
+        {
+          "name": "Chris Martin",
+          "position": "Reliever",
+          "mlb_id": 455119
+        },
+        {
+          "name": "Isaac Mattson",
+          "position": "Reliever",
+          "mlb_id": 676755
+        },
+        {
+          "name": "Emilio Pagan",
+          "position": "Reliever",
+          "mlb_id": 641941
+        },
+        {
+          "name": "Roki Sasaki",
+          "position": "Reliever",
+          "mlb_id": 808963
+        },
+        {
+          "name": "Ryan Walker",
+          "position": "Reliever",
+          "mlb_id": 676254
+        },
+        {
+          "name": "Freddy Fermin",
+          "position": "Catcher",
+          "mlb_id": 666023
+        },
+        {
+          "name": "Edgar Quero",
+          "position": "Catcher",
+          "mlb_id": 700337
+        },
+        {
+          "name": "Tyler Stephenson",
+          "position": "Catcher",
+          "mlb_id": 663886
+        },
+        {
+          "name": "Rece Hinds",
+          "position": "Designated Hitter",
+          "mlb_id": 677956
+        },
+        {
+          "name": "Trey Lipscomb",
+          "position": "Designated Hitter",
+          "mlb_id": 702358
+        },
+        {
+          "name": "Marcell Ozuna",
+          "position": "Designated Hitter",
+          "mlb_id": 542303
+        },
+        {
+          "name": "Anthony Santander",
+          "position": "Designated Hitter",
+          "mlb_id": 623993
+        },
+        {
+          "name": "Luisangel Acu\u00f1a",
+          "position": "Infielders",
+          "mlb_id": 682668
+        },
+        {
+          "name": "Josh Bell",
+          "position": "Infielders",
+          "mlb_id": 605137
+        },
+        {
+          "name": "Francisco Lindor",
+          "position": "Infielders",
+          "mlb_id": 596019
+        },
+        {
+          "name": "Otto L\u00f3pez",
+          "position": "Infielders",
+          "mlb_id": 672640
+        },
+        {
+          "name": "Josh Naylor",
+          "position": "Infielders",
+          "mlb_id": 647304
+        },
+        {
+          "name": "Josh Smith",
+          "position": "Infielders",
+          "mlb_id": 669701
+        },
+        {
+          "name": "Cole Young",
+          "position": "Infielders",
+          "mlb_id": 702284
+        },
+        {
+          "name": "J.J. Bleday",
+          "position": "Outfielders",
+          "mlb_id": 668709
+        },
+        {
+          "name": "Isaac Collins",
+          "position": "Outfielders",
+          "mlb_id": 686555
+        },
+        {
+          "name": "Dylan Crews",
+          "position": "Outfielders",
+          "mlb_id": 686611
+        },
+        {
+          "name": "Jakob Marsee",
+          "position": "Outfielders",
+          "mlb_id": 805300
+        },
+        {
+          "name": "Bryan Reynolds",
+          "position": "Outfielders",
+          "mlb_id": 668804
+        },
+        {
+          "name": "Johan Rojas",
+          "position": "Outfielders",
+          "mlb_id": 679032
+        },
+        {
+          "name": "Mike Yastrzemski",
+          "position": "Outfielders",
+          "mlb_id": 573262
+        }
+      ]
+    },
+    {
+      "team_name": "WAUKESHA WOMBATS",
+      "team_code": "WW",
+      "division": "EASTERN",
+      "players": [
+        {
+          "name": "Griffin Canning",
+          "position": "Starter",
+          "mlb_id": 656288
+        },
+        {
+          "name": "Garrett Crochet",
+          "position": "Starter",
+          "mlb_id": 676979
+        },
+        {
+          "name": "Jacob deGrom",
+          "position": "Starter",
+          "mlb_id": 594798
+        },
+        {
+          "name": "Luis Gil",
+          "position": "Starter",
+          "mlb_id": 661563
+        },
+        {
+          "name": "Logan Henderson",
+          "position": "Starter",
+          "mlb_id": 701656
+        },
+        {
+          "name": "Adrian Houser",
+          "position": "Starter",
+          "mlb_id": 605288
+        },
+        {
+          "name": "Reynaldo Lopez",
+          "position": "Starter",
+          "mlb_id": 625643
+        },
+        {
+          "name": "Tyler Mahle",
+          "position": "Starter",
+          "mlb_id": 641816
+        },
+        {
+          "name": "Alek Manoah",
+          "position": "Starter",
+          "mlb_id": 666201
+        },
+        {
+          "name": "Zebby Matthews",
+          "position": "Starter",
+          "mlb_id": 805673
+        },
+        {
+          "name": "Robbie Ray",
+          "position": "Starter",
+          "mlb_id": 592662
+        },
+        {
+          "name": "Clarke Schmidt",
+          "position": "Starter",
+          "mlb_id": 657376
+        },
+        {
+          "name": "Spencer Strider",
+          "position": "Starter",
+          "mlb_id": 675911
+        },
+        {
+          "name": "Jameson Taillon",
+          "position": "Starter",
+          "mlb_id": 592791
+        },
+        {
+          "name": "Matt Brash",
+          "position": "Reliever",
+          "mlb_id": 666374
+        },
+        {
+          "name": "Lucas Erceg",
+          "position": "Reliever",
+          "mlb_id": 668674
+        },
+        {
+          "name": "Pete Fairbanks",
+          "position": "Reliever",
+          "mlb_id": 664126
+        },
+        {
+          "name": "Josh Hader",
+          "position": "Reliever",
+          "mlb_id": 623352
+        },
+        {
+          "name": "Kyle Harrison",
+          "position": "Reliever",
+          "mlb_id": 690986
+        },
+        {
+          "name": "Troy Melton",
+          "position": "Reliever",
+          "mlb_id": 675512
+        },
+        {
+          "name": "Patrick Bailey",
+          "position": "Catcher",
+          "mlb_id": 672275
+        },
+        {
+          "name": "Shea Langeliers",
+          "position": "Catcher",
+          "mlb_id": 669127
+        },
+        {
+          "name": "Carter Jensen",
+          "position": "Designated Hitter",
+          "mlb_id": 695600
+        },
+        {
+          "name": "Junior Caminero",
+          "position": "Infielders",
+          "mlb_id": 691406
+        },
+        {
+          "name": "Brendan Donovan",
+          "position": "Infielders",
+          "mlb_id": 680977
+        },
+        {
+          "name": "Rhys Hoskins",
+          "position": "Infielders",
+          "mlb_id": 656555
+        },
+        {
+          "name": "Nick Kurtz",
+          "position": "Infielders",
+          "mlb_id": 701762
+        },
+        {
+          "name": "Manny Machado",
+          "position": "Infielders",
+          "mlb_id": 592518
+        },
+        {
+          "name": "Chase Meidroth",
+          "position": "Infielders",
+          "mlb_id": 805367
+        },
+        {
+          "name": "Jeremy Pena",
+          "position": "Infielders",
+          "mlb_id": 665161
+        },
+        {
+          "name": "Dansby Swanson",
+          "position": "Infielders",
+          "mlb_id": 621020
+        },
+        {
+          "name": "Ronald Acuna",
+          "position": "Outfielders",
+          "mlb_id": 660670
+        },
+        {
+          "name": "Dylan Beavers",
+          "position": "Outfielders",
+          "mlb_id": 687637
+        },
+        {
+          "name": "Dominic Canzone",
+          "position": "Outfielders",
+          "mlb_id": 686527
+        },
+        {
+          "name": "Adolis Garc\u00eda",
+          "position": "Outfielders",
+          "mlb_id": 666969
+        },
+        {
+          "name": "Wyatt Langford",
+          "position": "Outfielders",
+          "mlb_id": 694671
+        },
+        {
+          "name": "Joey Loperfido",
+          "position": "Outfielders",
+          "mlb_id": 694388
+        },
+        {
+          "name": "Wenceel Perez",
+          "position": "Outfielders",
+          "mlb_id": 672761
+        },
+        {
+          "name": "Ceddanne Rafaela",
+          "position": "Outfielders",
+          "mlb_id": 678882
+        },
+        {
+          "name": "Taylor Ward",
+          "position": "Outfielders",
+          "mlb_id": 621493
+        }
+      ]
+    },
+    {
+      "team_name": "ARCADIA ANGELS",
+      "team_code": "AA",
+      "division": "WESTERN",
+      "players": [
+        {
+          "name": "Chris Bassitt",
+          "position": "Starter",
+          "mlb_id": 605135
+        },
+        {
+          "name": "Luis M. Castillo",
+          "position": "Starter",
+          "mlb_id": 622491
+        },
+        {
+          "name": "Connelly Early",
+          "position": "Starter",
+          "mlb_id": 813349
+        },
+        {
+          "name": "Hunter Greene",
+          "position": "Starter",
+          "mlb_id": 668881
+        },
+        {
+          "name": "Christian Javier",
+          "position": "Starter",
+          "mlb_id": 664299
+        },
+        {
+          "name": "Clayton Kershaw",
+          "position": "Starter",
+          "mlb_id": 477132
+        },
+        {
+          "name": "Jack Kochanowicz",
+          "position": "Starter",
+          "mlb_id": 686799
+        },
+        {
+          "name": "Steven Kolek",
+          "position": "Starter",
+          "mlb_id": 663568
+        },
+        {
+          "name": "Michael McGreevy",
+          "position": "Starter",
+          "mlb_id": 700241
+        },
+        {
+          "name": "Spencer Schwellenbach",
+          "position": "Starter",
+          "mlb_id": 680885
+        },
+        {
+          "name": "Emmet Sheehan",
+          "position": "Starter",
+          "mlb_id": 686218
+        },
+        {
+          "name": "Ranger Suarez",
+          "position": "Starter",
+          "mlb_id": 624133
+        },
+        {
+          "name": "Trey Yesavage",
+          "position": "Starter",
+          "mlb_id": 702056
+        },
+        {
+          "name": "Bryan Abreu",
+          "position": "Reliever",
+          "mlb_id": 650556
+        },
+        {
+          "name": "Reid Detmers",
+          "position": "Reliever",
+          "mlb_id": 672282
+        },
+        {
+          "name": "Edgardo Henriquez",
+          "position": "Reliever",
+          "mlb_id": 683618
+        },
+        {
+          "name": "Jimmy Herget",
+          "position": "Reliever",
+          "mlb_id": 623474
+        },
+        {
+          "name": "Ben Joyce",
+          "position": "Reliever",
+          "mlb_id": 690829
+        },
+        {
+          "name": "Andres Munoz",
+          "position": "Reliever",
+          "mlb_id": 662253
+        },
+        {
+          "name": "Drew Pomeranz",
+          "position": "Reliever",
+          "mlb_id": 519141
+        },
+        {
+          "name": "Justin Wrobleski",
+          "position": "Reliever",
+          "mlb_id": 680736
+        },
+        {
+          "name": "Logan O'Hoppe",
+          "position": "Catcher",
+          "mlb_id": 681351
+        },
+        {
+          "name": "Adley Rutschman",
+          "position": "Catcher",
+          "mlb_id": 668939
+        },
+        {
+          "name": "Kyle Teel",
+          "position": "Catcher",
+          "mlb_id": 691019
+        },
+        {
+          "name": "Moises Ballesteros",
+          "position": "Designated Hitter",
+          "mlb_id": 694208
+        },
+        {
+          "name": "Zach Cole",
+          "position": "Designated Hitter",
+          "mlb_id": 805904
+        },
+        {
+          "name": "Mike Trout",
+          "position": "Designated Hitter",
+          "mlb_id": 545361
+        },
+        {
+          "name": "Matt Chapman",
+          "position": "Infielders",
+          "mlb_id": 656305
+        },
+        {
+          "name": "Nick Gonzales",
+          "position": "Infielders",
+          "mlb_id": 693304
+        },
+        {
+          "name": "Christian Moore",
+          "position": "Infielders",
+          "mlb_id": 695681
+        },
+        {
+          "name": "Zach Neto",
+          "position": "Infielders",
+          "mlb_id": 687263
+        },
+        {
+          "name": "Luis Rengifo",
+          "position": "Infielders",
+          "mlb_id": 650859
+        },
+        {
+          "name": "Miguel Rojas",
+          "position": "Infielders",
+          "mlb_id": 500743
+        },
+        {
+          "name": "Lenyn Sosa",
+          "position": "Infielders",
+          "mlb_id": 672820
+        },
+        {
+          "name": "Christan Walker",
+          "position": "Infielders",
+          "mlb_id": 572233
+        },
+        {
+          "name": "Wilyer Abreu",
+          "position": "Outfielders",
+          "mlb_id": 677800
+        },
+        {
+          "name": "Roman Anthony",
+          "position": "Outfielders",
+          "mlb_id": 701350
+        },
+        {
+          "name": "Alex Call",
+          "position": "Outfielders",
+          "mlb_id": 669743
+        },
+        {
+          "name": "Jackson Merrill",
+          "position": "Outfielders",
+          "mlb_id": 701538
+        },
+        {
+          "name": "Brandon Nimmo",
+          "position": "Outfielders",
+          "mlb_id": 607043
+        }
+      ]
+    },
+    {
+      "team_name": "GALESVILLE GALOOTS",
+      "team_code": "GG",
+      "division": "WESTERN",
+      "players": [
+        {
+          "name": "Tanner Bibee",
+          "position": "Starter",
+          "mlb_id": 676440
+        },
+        {
+          "name": "Mike Burrows",
+          "position": "Starter",
+          "mlb_id": 681347
+        },
+        {
+          "name": "Tanner Houck",
+          "position": "Starter",
+          "mlb_id": 656557
+        },
+        {
+          "name": "Dean Kremer",
+          "position": "Starter",
+          "mlb_id": 665152
+        },
+        {
+          "name": "Ben Lively",
+          "position": "Starter",
+          "mlb_id": 594902
+        },
+        {
+          "name": "Tylor Megill",
+          "position": "Starter",
+          "mlb_id": 656731
+        },
+        {
+          "name": "Quinn Priester",
+          "position": "Starter",
+          "mlb_id": 682990
+        },
+        {
+          "name": "J.P. Sears",
+          "position": "Starter",
+          "mlb_id": 676664
+        },
+        {
+          "name": "Shane Smith",
+          "position": "Starter",
+          "mlb_id": 681343
+        },
+        {
+          "name": "Jason Adam",
+          "position": "Reliever",
+          "mlb_id": 592094
+        },
+        {
+          "name": "Aaron Bummer",
+          "position": "Reliever",
+          "mlb_id": 607481
+        },
+        {
+          "name": "Jhoan Duran",
+          "position": "Reliever",
+          "mlb_id": 661395
+        },
+        {
+          "name": "Jeff Hoffman",
+          "position": "Reliever",
+          "mlb_id": 656546
+        },
+        {
+          "name": "Tyler Holton",
+          "position": "Reliever",
+          "mlb_id": 663947
+        },
+        {
+          "name": "Andrew Kittredge",
+          "position": "Reliever",
+          "mlb_id": 552640
+        },
+        {
+          "name": "Christian Koss",
+          "position": "Reliever",
+          "mlb_id": 683766
+        },
+        {
+          "name": "Dylan Lee",
+          "position": "Reliever",
+          "mlb_id": 669276
+        },
+        {
+          "name": "Nick Mears",
+          "position": "Reliever",
+          "mlb_id": 683232
+        },
+        {
+          "name": "Shelby Miller",
+          "position": "Reliever",
+          "mlb_id": 571946
+        },
+        {
+          "name": "Tobias Myers",
+          "position": "Reliever",
+          "mlb_id": 668964
+        },
+        {
+          "name": "Danny Jansen",
+          "position": "Catcher",
+          "mlb_id": 643376
+        },
+        {
+          "name": "James McCann",
+          "position": "Catcher",
+          "mlb_id": 543510
+        },
+        {
+          "name": "Will D. Smith",
+          "position": "Catcher",
+          "mlb_id": 669257
+        },
+        {
+          "name": "Yordan Alvarez",
+          "position": "Designated Hitter",
+          "mlb_id": 670541
+        },
+        {
+          "name": "Christian Yelich",
+          "position": "Designated Hitter",
+          "mlb_id": 592885
+        },
+        {
+          "name": "Tommy Edman",
+          "position": "Infielders",
+          "mlb_id": 669242
+        },
+        {
+          "name": "Jeff McNeil",
+          "position": "Infielders",
+          "mlb_id": 643446
+        },
+        {
+          "name": "Yoan Moncada",
+          "position": "Infielders",
+          "mlb_id": 660162
+        },
+        {
+          "name": "Max Muncy",
+          "position": "Infielders",
+          "mlb_id": 571970
+        },
+        {
+          "name": "Leo Rivas",
+          "position": "Infielders",
+          "mlb_id": 660844
+        },
+        {
+          "name": "Dominic Smith",
+          "position": "Infielders",
+          "mlb_id": 642086
+        },
+        {
+          "name": "Trevor Story",
+          "position": "Infielders",
+          "mlb_id": 596115
+        },
+        {
+          "name": "Rowdy Tellez",
+          "position": "Infielders",
+          "mlb_id": 642133
+        },
+        {
+          "name": "Sam Haggerty",
+          "position": "Outfielders",
+          "mlb_id": 664059
+        },
+        {
+          "name": "Michael Helman",
+          "position": "Outfielders",
+          "mlb_id": 680737
+        },
+        {
+          "name": "Heriberto Hernandez",
+          "position": "Outfielders",
+          "mlb_id": 681715
+        },
+        {
+          "name": "Jeremiah Jackson",
+          "position": "Outfielders",
+          "mlb_id": 669236
+        },
+        {
+          "name": "Mickey Moniak",
+          "position": "Outfielders",
+          "mlb_id": 666160
+        },
+        {
+          "name": "Cedric Mullins",
+          "position": "Outfielders",
+          "mlb_id": 656775
+        },
+        {
+          "name": "Gavin Sheets",
+          "position": "Outfielders",
+          "mlb_id": 657757
+        }
+      ]
+    },
+    {
+      "team_name": "KANSAS CITY MONARCHS",
+      "team_code": "KC",
+      "division": "WESTERN",
+      "players": [
+        {
+          "name": "Spencer Arrighetti",
+          "position": "Starter",
+          "mlb_id": 681293
+        },
+        {
+          "name": "Taj Bradley",
+          "position": "Starter",
+          "mlb_id": 671737
+        },
+        {
+          "name": "Jared Jones",
+          "position": "Starter",
+          "mlb_id": 683003
+        },
+        {
+          "name": "Jack Leiter",
+          "position": "Starter",
+          "mlb_id": 683004
+        },
+        {
+          "name": "Zack Littell",
+          "position": "Starter",
+          "mlb_id": 641793
+        },
+        {
+          "name": "Pablo Lopez",
+          "position": "Starter",
+          "mlb_id": 641154
+        },
+        {
+          "name": "Eury Perez",
+          "position": "Starter",
+          "mlb_id": 691587
+        },
+        {
+          "name": "Carlos Rodon",
+          "position": "Starter",
+          "mlb_id": 607074
+        },
+        {
+          "name": "Max Scherzer",
+          "position": "Starter",
+          "mlb_id": 453286
+        },
+        {
+          "name": "Hurston Waldrep",
+          "position": "Starter",
+          "mlb_id": 694462
+        },
+        {
+          "name": "Bryan Woo",
+          "position": "Starter",
+          "mlb_id": 693433
+        },
+        {
+          "name": "Braxton Ashcraft",
+          "position": "Reliever",
+          "mlb_id": 677952
+        },
+        {
+          "name": "Felix Bautista",
+          "position": "Reliever",
+          "mlb_id": 642585
+        },
+        {
+          "name": "Chase Burns",
+          "position": "Reliever",
+          "mlb_id": 695505
+        },
+        {
+          "name": "Jeremiah Estrada",
+          "position": "Reliever",
+          "mlb_id": 669093
+        },
+        {
+          "name": "Kenley Jansen",
+          "position": "Reliever",
+          "mlb_id": 445276
+        },
+        {
+          "name": "Mason Miller",
+          "position": "Reliever",
+          "mlb_id": 695243
+        },
+        {
+          "name": "JoJo Romero",
+          "position": "Reliever",
+          "mlb_id": 668941
+        },
+        {
+          "name": "Dennis Santana",
+          "position": "Reliever",
+          "mlb_id": 642701
+        },
+        {
+          "name": "Cade Smith",
+          "position": "Reliever",
+          "mlb_id": 671922
+        },
+        {
+          "name": "Salvador Perez",
+          "position": "Catcher",
+          "mlb_id": 521692
+        },
+        {
+          "name": "Harry Ford",
+          "position": "Designated Hitter",
+          "mlb_id": 695670
+        },
+        {
+          "name": "Alex Freeland",
+          "position": "Designated Hitter",
+          "mlb_id": 690976
+        },
+        {
+          "name": "Ivan Herrera",
+          "position": "Designated Hitter",
+          "mlb_id": 671056
+        },
+        {
+          "name": "Kyle Schwarber",
+          "position": "Designated Hitter",
+          "mlb_id": 656941
+        },
+        {
+          "name": "Jonathan Aranda",
+          "position": "Infielders",
+          "mlb_id": 666018
+        },
+        {
+          "name": "Alec Bohm",
+          "position": "Infielders",
+          "mlb_id": 664761
+        },
+        {
+          "name": "Kristian Campbell",
+          "position": "Infielders",
+          "mlb_id": 692225
+        },
+        {
+          "name": "Maikel Garcia",
+          "position": "Infielders",
+          "mlb_id": 672580
+        },
+        {
+          "name": "Paul Goldschmidt",
+          "position": "Infielders",
+          "mlb_id": 502671
+        },
+        {
+          "name": "Gunnar Henderson",
+          "position": "Infielders",
+          "mlb_id": 683002
+        },
+        {
+          "name": "Jonathan India",
+          "position": "Infielders",
+          "mlb_id": 663697
+        },
+        {
+          "name": "Jorge Polanco",
+          "position": "Infielders",
+          "mlb_id": 593871
+        },
+        {
+          "name": "Miguel Vargas",
+          "position": "Infielders",
+          "mlb_id": 678246
+        },
+        {
+          "name": "Lawrence Butler",
+          "position": "Outfielders",
+          "mlb_id": 671732
+        },
+        {
+          "name": "Byron Buxton",
+          "position": "Outfielders",
+          "mlb_id": 621439
+        },
+        {
+          "name": "Jac Caglianone",
+          "position": "Outfielders",
+          "mlb_id": 695506
+        },
+        {
+          "name": "Riley Greene",
+          "position": "Outfielders",
+          "mlb_id": 682985
+        },
+        {
+          "name": "Teoscar Hernandez",
+          "position": "Outfielders",
+          "mlb_id": 606192
+        },
+        {
+          "name": "James Wood",
+          "position": "Outfielders",
+          "mlb_id": 695578
+        }
+      ]
+    },
+    {
+      "team_name": "OREGON OTTERS",
+      "team_code": "OO",
+      "division": "WESTERN",
+      "players": [
+        {
+          "name": "Sandy Alcantara",
+          "position": "Starter",
+          "mlb_id": 645261
+        },
+        {
+          "name": "Joe Boyle",
+          "position": "Starter",
+          "mlb_id": 671212
+        },
+        {
+          "name": "Kyle Bradish",
+          "position": "Starter",
+          "mlb_id": 680694
+        },
+        {
+          "name": "Dylan Cease",
+          "position": "Starter",
+          "mlb_id": 656302
+        },
+        {
+          "name": "Didier Fuentes",
+          "position": "Starter",
+          "mlb_id": 800311
+        },
+        {
+          "name": "Shota Imanaga",
+          "position": "Starter",
+          "mlb_id": 684007
+        },
+        {
+          "name": "Yusei Kikuchi",
+          "position": "Starter",
+          "mlb_id": 579328
+        },
+        {
+          "name": "Jose Quintana",
+          "position": "Starter",
+          "mlb_id": 500779
+        },
+        {
+          "name": "Cole Ragans",
+          "position": "Starter",
+          "mlb_id": 666142
+        },
+        {
+          "name": "River Ryan",
+          "position": "Starter",
+          "mlb_id": 689981
+        },
+        {
+          "name": "Will Warren",
+          "position": "Starter",
+          "mlb_id": 701542
+        },
+        {
+          "name": "Yoshinobu Yamamoto",
+          "position": "Starter",
+          "mlb_id": 808967
+        },
+        {
+          "name": "Hunter Barco",
+          "position": "Reliever",
+          "mlb_id": 682995
+        },
+        {
+          "name": "Brennan Bernardino",
+          "position": "Reliever",
+          "mlb_id": 657514
+        },
+        {
+          "name": "Calvin Faucher",
+          "position": "Reliever",
+          "mlb_id": 676534
+        },
+        {
+          "name": "Braydon Fisher",
+          "position": "Reliever",
+          "mlb_id": 680755
+        },
+        {
+          "name": "Cade Gibson",
+          "position": "Reliever",
+          "mlb_id": 806188
+        },
+        {
+          "name": "Lance McCullers Jr.",
+          "position": "Reliever",
+          "mlb_id": 621121
+        },
+        {
+          "name": "Yariel Rodriguez",
+          "position": "Reliever",
+          "mlb_id": 684320
+        },
+        {
+          "name": "Payton Tolle",
+          "position": "Reliever",
+          "mlb_id": 801139
+        },
+        {
+          "name": "Will Vest",
+          "position": "Reliever",
+          "mlb_id": 676684
+        },
+        {
+          "name": "Yainer Diaz",
+          "position": "Catcher",
+          "mlb_id": 673237
+        },
+        {
+          "name": "Nick Fortes",
+          "position": "Catcher",
+          "mlb_id": 663743
+        },
+        {
+          "name": "Alex Jackson",
+          "position": "Catcher",
+          "mlb_id": 656577
+        },
+        {
+          "name": "Keibert Ruiz",
+          "position": "Catcher",
+          "mlb_id": 660688
+        },
+        {
+          "name": "Samuel Basallo",
+          "position": "Designated Hitter",
+          "mlb_id": 694212
+        },
+        {
+          "name": "Triston Casas",
+          "position": "Designated Hitter",
+          "mlb_id": 671213
+        },
+        {
+          "name": "C.J. Abrams",
+          "position": "Infielders",
+          "mlb_id": 682928
+        },
+        {
+          "name": "Jake Cronenworth",
+          "position": "Infielders",
+          "mlb_id": 630105
+        },
+        {
+          "name": "Vladimir Guerrero Jr.",
+          "position": "Infielders",
+          "mlb_id": 665489
+        },
+        {
+          "name": "Austin Riley",
+          "position": "Infielders",
+          "mlb_id": 663586
+        },
+        {
+          "name": "Casey Schmitt",
+          "position": "Infielders",
+          "mlb_id": 669477
+        },
+        {
+          "name": "Gleyber Torres",
+          "position": "Infielders",
+          "mlb_id": 650402
+        },
+        {
+          "name": "Corbin Carroll",
+          "position": "Outfielders",
+          "mlb_id": 682998
+        },
+        {
+          "name": "Denzel Clarke",
+          "position": "Outfielders",
+          "mlb_id": 672016
+        },
+        {
+          "name": "Oneil Cruz",
+          "position": "Outfielders",
+          "mlb_id": 665833
+        },
+        {
+          "name": "Jake Fraley",
+          "position": "Outfielders",
+          "mlb_id": 641584
+        },
+        {
+          "name": "Parker Meadows",
+          "position": "Outfielders",
+          "mlb_id": 678009
+        },
+        {
+          "name": "Victor Scott",
+          "position": "Outfielders",
+          "mlb_id": 687363
+        },
+        {
+          "name": "Fernando Tatis Jr.",
+          "position": "Outfielders",
+          "mlb_id": 665487
+        }
+      ]
+    },
+    {
+      "team_name": "PHILADELPHIA FREEDOM",
+      "team_code": "PF",
+      "division": "WESTERN",
+      "players": [
+        {
+          "name": "Noah Cameron",
+          "position": "Starter",
+          "mlb_id": 702070
+        },
+        {
+          "name": "Slade Cecconi",
+          "position": "Starter",
+          "mlb_id": 677944
+        },
+        {
+          "name": "Gerrit Cole",
+          "position": "Starter",
+          "mlb_id": 543037
+        },
+        {
+          "name": "Kevin Gausman",
+          "position": "Starter",
+          "mlb_id": 592332
+        },
+        {
+          "name": "Logan Gilbert",
+          "position": "Starter",
+          "mlb_id": 669302
+        },
+        {
+          "name": "Cade Horton",
+          "position": "Starter",
+          "mlb_id": 690990
+        },
+        {
+          "name": "Jesus Luzardo",
+          "position": "Starter",
+          "mlb_id": 666200
+        },
+        {
+          "name": "Aaron Nola",
+          "position": "Starter",
+          "mlb_id": 605400
+        },
+        {
+          "name": "Kodai Senga",
+          "position": "Starter",
+          "mlb_id": 673540
+        },
+        {
+          "name": "Jose Alvarado",
+          "position": "Reliever",
+          "mlb_id": 621237
+        },
+        {
+          "name": "David Bednar",
+          "position": "Reliever",
+          "mlb_id": 670280
+        },
+        {
+          "name": "Camilo Doval",
+          "position": "Reliever",
+          "mlb_id": 666808
+        },
+        {
+          "name": "Brad Lord",
+          "position": "Reliever",
+          "mlb_id": 695418
+        },
+        {
+          "name": "Phil Maton",
+          "position": "Reliever",
+          "mlb_id": 664208
+        },
+        {
+          "name": "Sean Newcomb",
+          "position": "Reliever",
+          "mlb_id": 656794
+        },
+        {
+          "name": "Tanner Scott",
+          "position": "Reliever",
+          "mlb_id": 656945
+        },
+        {
+          "name": "Ian Seymour",
+          "position": "Reliever",
+          "mlb_id": 693855
+        },
+        {
+          "name": "Robert Suarez",
+          "position": "Reliever",
+          "mlb_id": 663158
+        },
+        {
+          "name": "Louis Varland",
+          "position": "Reliever",
+          "mlb_id": 686973
+        },
+        {
+          "name": "Victor Vodnik",
+          "position": "Reliever",
+          "mlb_id": 680767
+        },
+        {
+          "name": "Jacob Webb",
+          "position": "Reliever",
+          "mlb_id": 657097
+        },
+        {
+          "name": "Bo Naylor",
+          "position": "Catcher",
+          "mlb_id": 666310
+        },
+        {
+          "name": "Agustin Ramirez",
+          "position": "Catcher",
+          "mlb_id": 682663
+        },
+        {
+          "name": "Adrian Del Castilllo",
+          "position": "Designated Hitter",
+          "mlb_id": 680728
+        },
+        {
+          "name": "Brett Baty",
+          "position": "Infielders",
+          "mlb_id": 683146
+        },
+        {
+          "name": "Jake Burger",
+          "position": "Infielders",
+          "mlb_id": 669394
+        },
+        {
+          "name": "Caleb Durbin",
+          "position": "Infielders",
+          "mlb_id": 702332
+        },
+        {
+          "name": "Colt Keith",
+          "position": "Infielders",
+          "mlb_id": 690993
+        },
+        {
+          "name": "Otto Kemp",
+          "position": "Infielders",
+          "mlb_id": 805249
+        },
+        {
+          "name": "Coby Mayo",
+          "position": "Infielders",
+          "mlb_id": 691723
+        },
+        {
+          "name": "Matt Olson",
+          "position": "Infielders",
+          "mlb_id": 621566
+        },
+        {
+          "name": "Bryson Stott",
+          "position": "Infielders",
+          "mlb_id": 681082
+        },
+        {
+          "name": "Anthony Volpe",
+          "position": "Infielders",
+          "mlb_id": 683011
+        },
+        {
+          "name": "Randy Arozarena",
+          "position": "Outfielders",
+          "mlb_id": 668227
+        },
+        {
+          "name": "Brooks Baldwin",
+          "position": "Outfielders",
+          "mlb_id": 681460
+        },
+        {
+          "name": "Jarren Duran",
+          "position": "Outfielders",
+          "mlb_id": 680776
+        },
+        {
+          "name": "Jake Mangum",
+          "position": "Outfielders",
+          "mlb_id": 663968
+        },
+        {
+          "name": "Brandon Marsh",
+          "position": "Outfielders",
+          "mlb_id": 669016
+        },
+        {
+          "name": "Lars Nootbaar",
+          "position": "Outfielders",
+          "mlb_id": 663457
+        },
+        {
+          "name": "Jordan Walker",
+          "position": "Outfielders",
+          "mlb_id": 691023
+        }
+      ]
+    },
+    {
+      "team_name": "PYRENEES WIZARDS",
+      "team_code": "PY",
+      "division": "WESTERN",
+      "players": [
+        {
+          "name": "Javier Assad",
+          "position": "Starter",
+          "mlb_id": 665871
+        },
+        {
+          "name": "Matthew Boyd",
+          "position": "Starter",
+          "mlb_id": 571510
+        },
+        {
+          "name": "Bryce Elder",
+          "position": "Starter",
+          "mlb_id": 693821
+        },
+        {
+          "name": "Max Fried",
+          "position": "Starter",
+          "mlb_id": 608331
+        },
+        {
+          "name": "Casey Mize",
+          "position": "Starter",
+          "mlb_id": 663554
+        },
+        {
+          "name": "Kumar Rocker",
+          "position": "Starter",
+          "mlb_id": 677958
+        },
+        {
+          "name": "Luis Severino",
+          "position": "Starter",
+          "mlb_id": 622663
+        },
+        {
+          "name": "Paul Skenes",
+          "position": "Starter",
+          "mlb_id": 694973
+        },
+        {
+          "name": "Brandon Sproat",
+          "position": "Starter",
+          "mlb_id": 687075
+        },
+        {
+          "name": "Mick Abel",
+          "position": "Reliever",
+          "mlb_id": 690953
+        },
+        {
+          "name": "Ben Brown",
+          "position": "Reliever",
+          "mlb_id": 676962
+        },
+        {
+          "name": "Raisel Iglesias",
+          "position": "Reliever",
+          "mlb_id": 628452
+        },
+        {
+          "name": "Jakob Junis",
+          "position": "Reliever",
+          "mlb_id": 596001
+        },
+        {
+          "name": "Brad Keller",
+          "position": "Reliever",
+          "mlb_id": 641745
+        },
+        {
+          "name": "Orion Kerkering",
+          "position": "Reliever",
+          "mlb_id": 689147
+        },
+        {
+          "name": "Tony Santillan",
+          "position": "Reliever",
+          "mlb_id": 663574
+        },
+        {
+          "name": "Gabe Speier",
+          "position": "Reliever",
+          "mlb_id": 642100
+        },
+        {
+          "name": "Grant Taylor",
+          "position": "Reliever",
+          "mlb_id": 691799
+        },
+        {
+          "name": "Caleb Thielbar",
+          "position": "Reliever",
+          "mlb_id": 573204
+        },
+        {
+          "name": "Hunter Goodman",
+          "position": "Catcher",
+          "mlb_id": 696100
+        },
+        {
+          "name": "Kevin Alcantara",
+          "position": "Designated Hitter",
+          "mlb_id": 682634
+        },
+        {
+          "name": "Miguel Amaya",
+          "position": "Designated Hitter",
+          "mlb_id": 665804
+        },
+        {
+          "name": "Owen Caissie",
+          "position": "Designated Hitter",
+          "mlb_id": 683357
+        },
+        {
+          "name": "Nasim Nunez",
+          "position": "Designated Hitter",
+          "mlb_id": 683083
+        },
+        {
+          "name": "Giancarlo Stanton",
+          "position": "Designated Hitter",
+          "mlb_id": 519317
+        },
+        {
+          "name": "Luis Arraez",
+          "position": "Infielders",
+          "mlb_id": 650333
+        },
+        {
+          "name": "Jazz Chisholm",
+          "position": "Infielders",
+          "mlb_id": 665862
+        },
+        {
+          "name": "Freddie Freeman",
+          "position": "Infielders",
+          "mlb_id": 518692
+        },
+        {
+          "name": "Nico Hoerner",
+          "position": "Infielders",
+          "mlb_id": 663538
+        },
+        {
+          "name": "Brady House",
+          "position": "Infielders",
+          "mlb_id": 691781
+        },
+        {
+          "name": "Kyle Karros",
+          "position": "Infielders",
+          "mlb_id": 691720
+        },
+        {
+          "name": "Ha-Seong Kim",
+          "position": "Infielders",
+          "mlb_id": 673490
+        },
+        {
+          "name": "Nolan Schanuel",
+          "position": "Infielders",
+          "mlb_id": 694384
+        },
+        {
+          "name": "Pavin Smith",
+          "position": "Infielders",
+          "mlb_id": 656976
+        },
+        {
+          "name": "Eugenio Suarez",
+          "position": "Infielders",
+          "mlb_id": 553993
+        },
+        {
+          "name": "Jacob Wilson",
+          "position": "Infielders",
+          "mlb_id": 805779
+        },
+        {
+          "name": "Pete Crow-Armstrong",
+          "position": "Outfielders",
+          "mlb_id": 691718
+        },
+        {
+          "name": "Jonny DeLuca",
+          "position": "Outfielders",
+          "mlb_id": 676356
+        },
+        {
+          "name": "Ian Happ",
+          "position": "Outfielders",
+          "mlb_id": 664023
+        },
+        {
+          "name": "Seiya Suzuki",
+          "position": "Outfielders",
+          "mlb_id": 673548
+        }
+      ]
+    },
+    {
+      "team_name": "ROSS ISLAND RATS",
+      "team_code": "RI",
+      "division": "WESTERN",
+      "players": [
+        {
+          "name": "Andrew Abbott",
+          "position": "Starter",
+          "mlb_id": 671096
+        },
+        {
+          "name": "Jose Berrios",
+          "position": "Starter",
+          "mlb_id": 621244
+        },
+        {
+          "name": "Jake Irvin",
+          "position": "Starter",
+          "mlb_id": 663623
+        },
+        {
+          "name": "Parker Messick",
+          "position": "Starter",
+          "mlb_id": 800048
+        },
+        {
+          "name": "Luis Morales",
+          "position": "Starter",
+          "mlb_id": 806960
+        },
+        {
+          "name": "Chad Patrick",
+          "position": "Starter",
+          "mlb_id": 694477
+        },
+        {
+          "name": "Trevor Rogers",
+          "position": "Starter",
+          "mlb_id": 669432
+        },
+        {
+          "name": "Landen Roupp",
+          "position": "Starter",
+          "mlb_id": 694738
+        },
+        {
+          "name": "Justin Steele",
+          "position": "Starter",
+          "mlb_id": 657006
+        },
+        {
+          "name": "Zack Wheeler",
+          "position": "Starter",
+          "mlb_id": 554430
+        },
+        {
+          "name": "Eduard Bazardo",
+          "position": "Reliever",
+          "mlb_id": 660825
+        },
+        {
+          "name": "Joey Cantillo",
+          "position": "Reliever",
+          "mlb_id": 676282
+        },
+        {
+          "name": "Hunter Gaddis",
+          "position": "Reliever",
+          "mlb_id": 683769
+        },
+        {
+          "name": "Hogan Harris",
+          "position": "Reliever",
+          "mlb_id": 663687
+        },
+        {
+          "name": "Jake Latz",
+          "position": "Reliever",
+          "mlb_id": 656641
+        },
+        {
+          "name": "Riley O'Brien",
+          "position": "Reliever",
+          "mlb_id": 676617
+        },
+        {
+          "name": "Justin Sterner",
+          "position": "Reliever",
+          "mlb_id": 686993
+        },
+        {
+          "name": "Matt Svanson",
+          "position": "Reliever",
+          "mlb_id": 694335
+        },
+        {
+          "name": "Luke Weaver",
+          "position": "Reliever",
+          "mlb_id": 596133
+        },
+        {
+          "name": "Carson Kelly",
+          "position": "Catcher",
+          "mlb_id": 608348
+        },
+        {
+          "name": "Carlos Narvaez",
+          "position": "Catcher",
+          "mlb_id": 665966
+        },
+        {
+          "name": "Liover Peguero",
+          "position": "Designated Hitter",
+          "mlb_id": 678894
+        },
+        {
+          "name": "Jose Altuve",
+          "position": "Infielders",
+          "mlb_id": 514888
+        },
+        {
+          "name": "Gabriel Arias",
+          "position": "Infielders",
+          "mlb_id": 672356
+        },
+        {
+          "name": "Willson Contreras",
+          "position": "Infielders",
+          "mlb_id": 575929
+        },
+        {
+          "name": "Carlos Correa",
+          "position": "Infielders",
+          "mlb_id": 621043
+        },
+        {
+          "name": "J.P. Crawford",
+          "position": "Infielders",
+          "mlb_id": 641487
+        },
+        {
+          "name": "David Hamilton",
+          "position": "Infielders",
+          "mlb_id": 666152
+        },
+        {
+          "name": "Isaac Paredes",
+          "position": "Infielders",
+          "mlb_id": 670623
+        },
+        {
+          "name": "Vinnie Pasquantino",
+          "position": "Infielders",
+          "mlb_id": 686469
+        },
+        {
+          "name": "Brayan Rocchio",
+          "position": "Infielders",
+          "mlb_id": 677587
+        },
+        {
+          "name": "Marcus Semien",
+          "position": "Infielders",
+          "mlb_id": 543760
+        },
+        {
+          "name": "Willi Castro",
+          "position": "Outfielders",
+          "mlb_id": 650489
+        },
+        {
+          "name": "Colton Cowser",
+          "position": "Outfielders",
+          "mlb_id": 681297
+        },
+        {
+          "name": "Trevor Larnach",
+          "position": "Outfielders",
+          "mlb_id": 663616
+        },
+        {
+          "name": "Daylen Lile",
+          "position": "Outfielders",
+          "mlb_id": 695734
+        },
+        {
+          "name": "Jake Meyers",
+          "position": "Outfielders",
+          "mlb_id": 676694
+        },
+        {
+          "name": "Heliot Ramos",
+          "position": "Outfielders",
+          "mlb_id": 671218
+        },
+        {
+          "name": "Julio Rodriguez",
+          "position": "Outfielders",
+          "mlb_id": 677594
+        },
+        {
+          "name": "Jesus Sanchez",
+          "position": "Outfielders",
+          "mlb_id": 660821
+        }
+      ]
+    },
+    {
+      "team_name": "SHOREWOOD SEAHAWKS",
+      "team_code": "SH",
+      "division": "WESTERN",
+      "players": [
+        {
+          "name": "Cade Cavalli",
+          "position": "Starter",
+          "mlb_id": 676917
+        },
+        {
+          "name": "Zac Gallen",
+          "position": "Starter",
+          "mlb_id": 668678
+        },
+        {
+          "name": "MacKenzie Gore",
+          "position": "Starter",
+          "mlb_id": 669022
+        },
+        {
+          "name": "Janson Junk",
+          "position": "Starter",
+          "mlb_id": 676083
+        },
+        {
+          "name": "Mitch Keller",
+          "position": "Starter",
+          "mlb_id": 656605
+        },
+        {
+          "name": "Matthew Liberatore",
+          "position": "Starter",
+          "mlb_id": 669461
+        },
+        {
+          "name": "Rhett Lowder",
+          "position": "Starter",
+          "mlb_id": 695076
+        },
+        {
+          "name": "Reese Olson",
+          "position": "Starter",
+          "mlb_id": 681857
+        },
+        {
+          "name": "Micheal Soroka",
+          "position": "Starter",
+          "mlb_id": 647336
+        },
+        {
+          "name": "Gavin Williams",
+          "position": "Starter",
+          "mlb_id": 668909
+        },
+        {
+          "name": "Kolby Allard",
+          "position": "Reliever",
+          "mlb_id": 663465
+        },
+        {
+          "name": "Shawn Armstrong",
+          "position": "Reliever",
+          "mlb_id": 542888
+        },
+        {
+          "name": "Tanner Banks",
+          "position": "Reliever",
+          "mlb_id": 621383
+        },
+        {
+          "name": "Eric Lauer",
+          "position": "Reliever",
+          "mlb_id": 641778
+        },
+        {
+          "name": "Hoby Milner",
+          "position": "Reliever",
+          "mlb_id": 571948
+        },
+        {
+          "name": "Steve Okert",
+          "position": "Reliever",
+          "mlb_id": 595345
+        },
+        {
+          "name": "Joey Bart",
+          "position": "Catcher",
+          "mlb_id": 663698
+        },
+        {
+          "name": "Henry Davis",
+          "position": "Catcher",
+          "mlb_id": 680779
+        },
+        {
+          "name": "Austin Wells",
+          "position": "Catcher",
+          "mlb_id": 669224
+        },
+        {
+          "name": "Sal Stewart",
+          "position": "Designated Hitter",
+          "mlb_id": 701398
+        },
+        {
+          "name": "Christian Encarnacion-Strand",
+          "position": "Designated Hitter",
+          "mlb_id": 687952
+        },
+        {
+          "name": "Joey Wiemer",
+          "position": "Designated Hitter",
+          "mlb_id": 686894
+        },
+        {
+          "name": "Jose Caballero",
+          "position": "Infielders",
+          "mlb_id": 676609
+        },
+        {
+          "name": "Josh Jung",
+          "position": "Infielders",
+          "mlb_id": 673962
+        },
+        {
+          "name": "Hyeseong Kim",
+          "position": "Infielders",
+          "mlb_id": 808975
+        },
+        {
+          "name": "Colson Montgomery",
+          "position": "Infielders",
+          "mlb_id": 695657
+        },
+        {
+          "name": "Max P. Muncy",
+          "position": "Infielders",
+          "mlb_id": 691777
+        },
+        {
+          "name": "Matt Shaw",
+          "position": "Infielders",
+          "mlb_id": 807713
+        },
+        {
+          "name": "Spencer Steer",
+          "position": "Infielders",
+          "mlb_id": 668715
+        },
+        {
+          "name": "Spencer Torkelson",
+          "position": "Infielders",
+          "mlb_id": 679529
+        },
+        {
+          "name": "Ezequiel Tovar",
+          "position": "Infielders",
+          "mlb_id": 678662
+        },
+        {
+          "name": "Jordan Westburg",
+          "position": "Infielders",
+          "mlb_id": 676059
+        },
+        {
+          "name": "Carson Williams",
+          "position": "Infielders",
+          "mlb_id": 700246
+        },
+        {
+          "name": "Ben Williamson",
+          "position": "Infielders",
+          "mlb_id": 810938
+        },
+        {
+          "name": "Masyn Winn",
+          "position": "Infielders",
+          "mlb_id": 691026
+        },
+        {
+          "name": "Harrison Bader",
+          "position": "Outfielders",
+          "mlb_id": 664056
+        },
+        {
+          "name": "Cody Bellinger",
+          "position": "Outfielders",
+          "mlb_id": 641355
+        },
+        {
+          "name": "Mauricio Dubon",
+          "position": "Outfielders",
+          "mlb_id": 643289
+        },
+        {
+          "name": "T.J. Friedl",
+          "position": "Outfielders",
+          "mlb_id": 670770
+        },
+        {
+          "name": "Kyle Tucker",
+          "position": "Outfielders",
+          "mlb_id": 663656
+        }
+      ]
+    }
+  ]
+}
