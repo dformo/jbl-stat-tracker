@@ -151,6 +151,7 @@
         <tr>
             <th>Player</th>
             <th>Role</th>
+            <th>G</th>
             <th>GS</th>
             <th>IP</th>
             <th>W</th>
@@ -190,6 +191,7 @@
             <th>BB</th>
             <th>K</th>
             <th>GIDP</th>
+            <th>AVG</th>
             <th>OBP</th>
             <th>SLG</th>
             <th>OPS</th>
@@ -292,6 +294,7 @@ async function loadStatsForTeam(teamCode, mode) {
                 <tr>
                     <td>${player.name}</td>
                     <td>${player.position}</td>
+                    <td>${stats?.gamesPlayed ?? ""}</td>
                     <td>${stats?.gamesStarted ?? ""}</td>
                     <td>${formatIP(stats?.inningsPitched)}</td>
                     <td>${stats?.wins ?? ""}</td>
@@ -333,6 +336,7 @@ async function loadStatsForTeam(teamCode, mode) {
                     <td>${stats?.baseOnBalls ?? ""}</td>
                     <td>${stats?.strikeOuts ?? ""}</td>
                     <td>${stats?.groundIntoDoublePlay ?? ""}</td>
+                    <td>${stats?.avg ?? ""}</td>
                     <td>${stats?.obp ?? ""}</td>
                     <td>${stats?.slg ?? ""}</td>
                     <td>${stats?.ops ?? ""}</td>
