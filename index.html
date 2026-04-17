@@ -41,6 +41,31 @@
         box-shadow: 0 0 0 3px rgba(0,70,135,0.25);
     }
 
+    #modeButtons {
+        margin-bottom: 25px;
+    }
+
+    #modeButtons button {
+        padding: 10px 18px;
+        margin-right: 10px;
+        border-radius: 25px;
+        border: 1px solid #ccc;
+        background: white;
+        cursor: pointer;
+        font-size: 15px;
+        transition: 0.2s ease;
+    }
+
+    #modeButtons button:hover {
+        background: #eee;
+    }
+
+    #modeButtons button.active {
+        background: #004687;
+        color: white;
+        border-color: #00325a;
+    }
+
     table {
         width: 100%;
         border-collapse: collapse;
@@ -78,6 +103,33 @@
         font-weight: 600;
         color: #004687;
     }
+
+    th.sortable {
+        position: relative;
+        padding-right: 18px;
+        cursor: pointer;
+    }
+
+    th.sortable .arrow {
+        position: absolute;
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 10px;
+        opacity: 0.6;
+    }
+
+    #teamSelect {
+        -webkit-appearance: none;  /* Chrome, Safari */
+        -moz-appearance: none;     /* Firefox */
+        appearance: none;          /* Standard */
+        background-image: none;    /* Remove default arrow */
+    }
+
+    #teamSelect:hover,
+    #teamSelect:focus {
+        background-image: none;
+    }
 </style>
 </head>
 <body>
@@ -85,6 +137,12 @@
 <h1>JBL Stat Tracker</h1>
 
 <select id="teamSelect"></select>
+<div id="modeButtons">
+    <button data-mode="season">Season Totals</button>
+    <button data-mode="today">Today</button>
+    <button data-mode="yesterday">Yesterday</button>
+    <button data-mode="last7">Last 7 Days</button>
+</div>
 
 <!-- PITCHER GRID -->
 <h2>Pitchers</h2>
@@ -146,7 +204,142 @@ let rosters = [];
 async function loadRosters() {
     const response = await fetch("tools/rosters.json");
     rosters = (await response.json()).teams;
+
     populateTeamSelector();
+
+    // Load grids with roster-only data (blank stats)
+    renderTeamRosterOnly(rosters[0].team_code);
+
+    // No mode selected yet
+}
+
+function renderTeamRosterOnly(teamCode) {
+    const team = rosters.find(t => t.team_code === teamCode);
+
+    const pitcherBody = document.querySelector("#pitcherGrid tbody");
+    const batterBody = document.querySelector("#batterGrid tbody");
+
+    pitcherBody.innerHTML = "";
+    batterBody.innerHTML = "";
+
+    for (const player of team.players) {
+        const isPitcher = (player.position === "Starter" || player.position === "Reliever");
+
+        if (isPitcher) {
+            pitcherBody.innerHTML += `
+                <tr>
+                    <td>${player.name}</td>
+                    <td>${player.position}</td>
+                    <td></td><td></td><td></td><td></td>
+                    <td></td><td></td><td></td><td></td>
+                    <td></td><td></td><td></td><td></td>
+                    <td></td><td></td>
+                </tr>
+            `;
+        } else {
+            // Map long positions → short codes
+            const posShort = {
+                "Catcher": "C",
+                "Designated Hitter": "DH",
+                "Infielders": "IF",
+                "Outfielders": "OF"
+            }[player.position] ?? player.position;
+
+            batterBody.innerHTML += `
+                <tr>
+                    <td>${player.name}</td>
+                    <td>${posShort}</td>
+                    <td></td><td></td><td></td><td></td>
+                    <td></td><td></td><td></td><td></td>
+                    <td></td><td></td><td></td><td></td>
+                    <td></td><td></td><td></td>
+                </tr>
+            `;
+        }
+    }
+}
+
+async function loadStatsForTeam(teamCode, mode) {
+    const team = rosters.find(t => t.team_code === teamCode);
+
+    const pitcherBody = document.querySelector("#pitcherGrid tbody");
+    const batterBody = document.querySelector("#batterGrid tbody");
+
+    pitcherBody.innerHTML = "";
+    batterBody.innerHTML = "";
+
+    for (const player of team.players) {
+        const isPitcher = (player.position === "Starter" || player.position === "Reliever");
+        const mlb_id = player.mlb_id;
+
+        let stats = null;
+
+        if (mlb_id !== "none" && mlb_id !== "multi") {
+            stats = await fetchStats(mlb_id, isPitcher ? "pitching" : "hitting", mode);
+            stats = isPitcher ? normalizePitchingStats(stats) : normalizeHittingStats(stats);
+        }
+
+        if (isPitcher) {
+            // compute K/9, H/9
+            let ip = parseFloat(stats?.inningsPitched ?? 0);
+            let k = parseFloat(stats?.strikeOuts ?? 0);
+            let h = parseFloat(stats?.hits ?? 0);
+
+            let k9 = (ip > 0 ? ((k / ip) * 9).toFixed(2) : "");
+            let h9 = (ip > 0 ? ((h / ip) * 9).toFixed(2) : "");
+
+            pitcherBody.innerHTML += `
+                <tr>
+                    <td>${player.name}</td>
+                    <td>${player.position}</td>
+                    <td>${stats?.gamesStarted ?? ""}</td>
+                    <td>${formatIP(stats?.inningsPitched)}</td>
+                    <td>${stats?.wins ?? ""}</td>
+                    <td>${stats?.losses ?? ""}</td>
+                    <td>${stats?.completeGames ?? ""}</td>
+                    <td>${stats?.shutouts ?? ""}</td>
+                    <td>${stats?.saves ?? ""}</td>
+                    <td>${stats?.homeRuns ?? ""}</td>
+                    <td>${stats?.baseOnBalls ?? ""}</td>
+                    <td>${stats?.strikeOuts ?? ""}</td>
+                    <td>${stats?.era ?? ""}</td>
+                    <td>${stats?.whip ?? ""}</td>
+                    <td>${k9}</td>
+                    <td>${h9}</td>
+                </tr>
+            `;
+        } else {
+            const posShort = {
+                "Catcher": "C",
+                "Designated Hitter": "DH",
+                "Infielders": "IF",
+                "Outfielders": "OF"
+            }[player.position] ?? player.position;
+
+            batterBody.innerHTML += `
+                <tr>
+                    <td>${player.name}</td>
+                    <td>${posShort}</td>
+                    <td>${stats?.plateAppearances ?? ""}</td>
+                    <td>${stats?.atBats ?? ""}</td>
+                    <td>${stats?.hits ?? ""}</td>
+                    <td>${stats?.doubles ?? ""}</td>
+                    <td>${stats?.triples ?? ""}</td>
+                    <td>${stats?.homeRuns ?? ""}</td>
+                    <td>${stats?.runs ?? ""}</td>
+                    <td>${stats?.rbi ?? ""}</td>
+                    <td>${stats?.stolenBases ?? ""}</td>
+                    <td>${stats?.caughtStealing ?? ""}</td>
+                    <td>${stats?.baseOnBalls ?? ""}</td>
+                    <td>${stats?.strikeOuts ?? ""}</td>
+                    <td>${stats?.groundIntoDoublePlay ?? ""}</td>
+                    <td>${stats?.obp ?? ""}</td>
+                    <td>${stats?.slg ?? ""}</td>
+                    <td>${stats?.ops ?? ""}</td>
+                </tr>
+            `;
+        }
+    }
 }
 
 function populateTeamSelector() {
@@ -159,21 +352,180 @@ function populateTeamSelector() {
         select.appendChild(option);
     });
 
-    select.addEventListener("change", () => renderTeam(select.value));
+    select.addEventListener("change", () => {
+        // Clear mode buttons
+        document.querySelectorAll("#modeButtons button").forEach(b => b.classList.remove("active"));
+
+        // Reset sort arrows
+        resetSortIndicators();
+
+        // Load blank roster-only grids
+        renderTeamRosterOnly(select.value);
+    });
 
     renderTeam(rosters[0].team_code);
 }
 
-async function fetchStats(mlb_id, group) {
-    const url = `https://statsapi.mlb.com/api/v1/people/${mlb_id}/stats?stats=season&group=${group}`;
+async function fetchStats(mlb_id, group, mode) {
+    let url = `https://statsapi.mlb.com/api/v1/people/${mlb_id}/stats?stats=gameLog&group=${group}`;
+
+    // Season totals use a different endpoint
+    if (mode === "season") {
+        url = `https://statsapi.mlb.com/api/v1/people/${mlb_id}/stats?stats=season&group=${group}`;
+    }
+
     const res = await fetch(url);
     const data = await res.json();
 
     try {
-        return data.stats[0].splits[0].stat;
+        if (mode === "season") {
+            return data.stats[0].splits[0].stat;
+        }
+
+        const games = data.stats[0].splits;
+        if (!games.length) return null;
+
+        const today = new Date();
+
+        // Helper to format YYYY-MM-DD
+        const fmt = d => {
+            const yyyy = d.getFullYear();
+            const mm = String(d.getMonth() + 1).padStart(2, "0");
+            const dd = String(d.getDate()).padStart(2, "0");
+            return `${yyyy}-${mm}-${dd}`;
+        };
+
+        let filtered = [];
+
+        if (mode === "today") {
+            const todayStr = fmt(today);
+            filtered = games.filter(g => g.date === todayStr);
+        }
+
+        if (mode === "yesterday") {
+            const d = new Date(today);
+            d.setDate(d.getDate() - 1);
+            const yStr = fmt(d);
+            filtered = games.filter(g => g.date === yStr);
+        }
+
+        if (mode === "last7") {
+            const d = new Date(today);
+            d.setDate(d.getDate() - 7);
+            const cutoff = fmt(d);
+            filtered = games.filter(g => g.date >= cutoff);
+        }
+
+        if (!filtered.length) return null;
+
+        // Aggregate stats
+        const totals = {};
+        for (const g of filtered) {
+            const s = g.stat;
+            for (const key in s) {
+                if (!isNaN(parseFloat(s[key]))) {
+                    totals[key] = (totals[key] ?? 0) + parseFloat(s[key]);
+                } else {
+                    totals[key] = s[key];
+                }
+            }
+        }
+
+        return totals;
+
     } catch {
         return null;
     }
+}
+
+function normalizeHittingStats(stats) {
+    if (!stats) return stats;
+
+    const ab = parseFloat(stats.atBats ?? 0);
+    const h  = parseFloat(stats.hits ?? 0);
+    const doubles = parseFloat(stats.doubles ?? 0);
+    const triples = parseFloat(stats.triples ?? 0);
+    const hr = parseFloat(stats.homeRuns ?? 0);
+    const bb = parseFloat(stats.baseOnBalls ?? 0);
+    const hbp = parseFloat(stats.hitByPitch ?? 0);
+    const sf = parseFloat(stats.sacFlies ?? 0);
+
+    const fmtRate = v => {
+        if (!isFinite(v)) return "";
+
+        let s = v.toFixed(3);
+
+        if (v === 0) return ".000";
+        if (v > 0 && v < 1) return s.replace(/^0/, "");
+        return s;
+    };
+
+    if (ab > 0) {
+        stats.avg = fmtRate(h / ab);
+    }
+
+    const obpDen = ab + bb + hbp + sf;
+    if (obpDen > 0) {
+        stats.obp = fmtRate((h + bb + hbp) / obpDen);
+    }
+
+    const totalBases = h + doubles + (2 * triples) + (3 * hr);
+    if (ab > 0) {
+        stats.slg = fmtRate(totalBases / ab);
+    }
+
+    if (stats.obp && stats.slg) {
+        const obpNum = parseFloat(stats.obp);
+        const slgNum = parseFloat(stats.slg);
+        stats.ops = fmtRate(obpNum + slgNum);
+    }
+
+    return stats;
+}
+
+function normalizePitchingStats(stats) {
+    if (!stats) return stats;
+
+    const ip = parseFloat(stats.inningsPitched ?? 0);
+    const er = parseFloat(stats.earnedRuns ?? 0);
+    const h  = parseFloat(stats.hits ?? 0);
+    const bb = parseFloat(stats.baseOnBalls ?? 0);
+    const k  = parseFloat(stats.strikeOuts ?? 0);
+
+    // ERA = (ER * 9) / IP
+    if (ip > 0) {
+        stats.era = ((er * 9) / ip).toFixed(2);
+    }
+
+    // WHIP = (BB + H) / IP
+    if (ip > 0) {
+        stats.whip = ((bb + h) / ip).toFixed(2);
+    }
+
+    // K/9 = (K / IP) * 9
+    if (ip > 0) {
+        stats.k9 = ((k / ip) * 9).toFixed(2);
+    }
+
+    // H/9 = (H / IP) * 9
+    if (ip > 0) {
+        stats.h9 = ((h / ip) * 9).toFixed(2);
+    }
+
+    return stats;
+}
+
+function formatIP(ipRaw) {
+    if (!ipRaw) return "";
+
+    // Convert to number safely
+    let ip = parseFloat(ipRaw);
+
+    // Round to 1 decimal place (baseball style)
+    let rounded = Math.round(ip * 10) / 10;
+
+    // Always show one decimal place
+    return rounded.toFixed(1);
 }
 
 async function renderTeam(teamCode) {
@@ -194,22 +546,20 @@ async function renderTeam(teamCode) {
         if (mlb_id !== "none" && mlb_id !== "multi") {
             const group = isPitcher ? "pitching" : "hitting";
             stats = await fetchStats(mlb_id, group);
+            stats = isPitcher ? normalizePitchingStats(stats) : normalizeHittingStats(stats);
         }
 
         if (isPitcher) {
-            let ip = parseFloat(stats?.inningsPitched ?? 0);
-            let k = parseFloat(stats?.strikeOuts ?? 0);
-            let h = parseFloat(stats?.hits ?? 0);
-
-            let k9 = (ip > 0 ? ((k / ip) * 9).toFixed(2) : "");
-            let h9 = (ip > 0 ? ((h / ip) * 9).toFixed(2) : "");
+            let ip = stats?.inningsPitched ?? "";
+            let k9 = stats?.k9 ?? "";
+            let h9 = stats?.h9 ?? "";
 
             pitcherBody.innerHTML += `
                 <tr>
                     <td>${player.name}</td>
                     <td>${player.position}</td>
                     <td>${stats?.gamesStarted ?? ""}</td>
-                    <td>${stats?.inningsPitched ?? ""}</td>
+                    <td>${ip}</td>
                     <td>${stats?.wins ?? ""}</td>
                     <td>${stats?.losses ?? ""}</td>
                     <td>${stats?.completeGames ?? ""}</td>
@@ -224,6 +574,7 @@ async function renderTeam(teamCode) {
                     <td>${h9}</td>
                 </tr>
             `;
+
         } else {
             // Map long positions → short codes
             const posShort = {
@@ -259,7 +610,88 @@ async function renderTeam(teamCode) {
     }
 }
 
+document.querySelectorAll("#modeButtons button").forEach(btn => {
+    btn.addEventListener("click", () => {
+        document.querySelectorAll("#modeButtons button").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const mode = btn.dataset.mode;
+        const teamCode = document.getElementById("teamSelect").value;
+
+        resetSortIndicators();
+        loadStatsForTeam(teamCode, mode);
+    });
+});
+
+function resetSortIndicators() {
+    document.querySelectorAll("th.sortable").forEach(th => {
+        th.classList.remove("asc", "desc");
+        const arrow = th.querySelector(".arrow");
+        if (arrow) arrow.textContent = "";
+    });
+}
+
 loadRosters();
+
+function makeTableSortable(tableId) {
+    const table = document.getElementById(tableId);
+    const headers = table.querySelectorAll("th");
+
+    headers.forEach((header, index) => {
+        header.classList.add("sortable");
+
+        // Add arrow span
+        const arrow = document.createElement("span");
+        arrow.classList.add("arrow");
+        arrow.textContent = ""; // start empty
+        header.appendChild(arrow);
+
+        header.addEventListener("click", () => {
+            const tbody = table.querySelector("tbody");
+            const rows = Array.from(tbody.querySelectorAll("tr"));
+
+            // Clear arrows on all other headers
+            headers.forEach(h => {
+                if (h !== header) {
+                    h.classList.remove("asc", "desc");
+                    h.querySelector(".arrow").textContent = "";
+                }
+            });
+
+            // Toggle sort direction
+            const isAsc = header.classList.toggle("asc");
+            header.classList.toggle("desc", !isAsc);
+
+            // Set arrow text
+            arrow.textContent = isAsc ? "▲" : "▼";
+
+            const asc = isAsc;
+
+            rows.sort((a, b) => {
+                const A = a.children[index].innerText.trim();
+                const B = b.children[index].innerText.trim();
+
+                const numA = parseFloat(A);
+                const numB = parseFloat(B);
+
+                const bothNumeric = !isNaN(numA) && !isNaN(numB);
+
+                if (bothNumeric) {
+                    return asc ? numA - numB : numB - numA;
+                }
+
+                return asc
+                    ? A.localeCompare(B)
+                    : B.localeCompare(A);
+            });
+
+            rows.forEach(r => tbody.appendChild(r));
+        });
+    });
+}
+
+makeTableSortable("pitcherGrid");
+makeTableSortable("batterGrid");
 </script>
 
 </body>
