@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>JBL Rosters</title>
+<title>JBL Stat Tracker</title>
+<link rel="icon" type="image/x-icon" href="assets/Baseball-icon.png">
 
 <style>
     body {
@@ -210,7 +211,7 @@ async function loadRosters() {
     populateTeamSelector();
 
     // Load grids with roster-only data (blank stats)
-    renderTeamRosterOnly(rosters[0].team_code);
+        renderTeamRosterOnly(rosters[0].team_code);
 
     // No mode selected yet
 }
