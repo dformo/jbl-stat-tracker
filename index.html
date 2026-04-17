@@ -3,59 +3,138 @@
 <head>
 <meta charset="UTF-8">
 <title>JBL Rosters</title>
+
 <style>
     body {
-        font-family: Arial, sans-serif;
+        font-family: "Segoe UI", Arial, sans-serif;
         margin: 20px;
-        background: #f5f5f5;
+        background: #f2f2f2;
+        color: #222;
     }
 
     h1 {
-        margin-bottom: 10px;
+        margin-bottom: 15px;
+        font-weight: 600;
+        color: #004687;
     }
 
-    select {
-        padding: 8px;
+    /* Modern dropdown styling */
+    #teamSelect {
+        padding: 10px 14px;
         font-size: 16px;
-        margin-bottom: 20px;
+        border-radius: 30px;
+        border: 1px solid #ccc;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        outline: none;
+        transition: 0.2s ease;
+        margin-bottom: 25px;
+    }
+
+    #teamSelect:hover {
+        border-color: #888;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    }
+
+    #teamSelect:focus {
+        border-color: #004687;
+        box-shadow: 0 0 0 3px rgba(0,70,135,0.25);
     }
 
     table {
         width: 100%;
         border-collapse: collapse;
         background: white;
+        border-radius: 6px;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        margin-bottom: 40px;
     }
 
     th, td {
-        padding: 10px;
-        border-bottom: 1px solid #ddd;
+        padding: 10px 12px;
         text-align: left;
+        border-bottom: 1px solid #e5e5e5;
     }
 
     th {
-        cursor: pointer;
-        background: #eee;
+        background: #004687;
+        color: white;
+        font-weight: 600;
+        user-select: none;
     }
 
-    tr:hover {
-        background: #f0f8ff;
+    tr:hover td {
+        background: #f7f7f7;
+    }
+
+    .mlb-id {
+        display: none;
+    }
+
+    h2 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: #004687;
     }
 </style>
 </head>
 <body>
 
-<h1>JBL Team Rosters</h1>
+<h1>JBL Stat Tracker</h1>
 
-<label for="teamSelect"><strong>Select Team:</strong></label>
-<br>
 <select id="teamSelect"></select>
 
-<table id="playersTable">
+<!-- PITCHER GRID -->
+<h2>Pitchers</h2>
+<table id="pitcherGrid">
     <thead>
         <tr>
-            <th data-sort="name">Player Name</th>
-            <th data-sort="position">Position</th>
-            <th data-sort="mlb_id">MLB ID</th>
+            <th>Player</th>
+            <th>Role</th>
+            <th>GS</th>
+            <th>IP</th>
+            <th>W</th>
+            <th>L</th>
+            <th>CG</th>
+            <th>SHO</th>
+            <th>SV</th>
+            <th>HR</th>
+            <th>BB</th>
+            <th>K</th>
+            <th>ERA</th>
+            <th>WHIP</th>
+            <th>K/9</th>
+            <th>H/9</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<!-- BATTER GRID -->
+<h2>Batters</h2>
+<table id="batterGrid">
+    <thead>
+        <tr>
+            <th>Player</th>
+            <th>Pos</th>
+            <th>PA</th>
+            <th>AB</th>
+            <th>H</th>
+            <th>2B</th>
+            <th>3B</th>
+            <th>HR</th>
+            <th>R</th>
+            <th>RBI</th>
+            <th>SB</th>
+            <th>CS</th>
+            <th>BB</th>
+            <th>K</th>
+            <th>GIDP</th>
+            <th>OBP</th>
+            <th>SLG</th>
+            <th>OPS</th>
         </tr>
     </thead>
     <tbody></tbody>
@@ -63,12 +142,10 @@
 
 <script>
 let rosters = [];
-let currentSort = { column: null, asc: true };
 
 async function loadRosters() {
     const response = await fetch("tools/rosters.json");
     rosters = (await response.json()).teams;
-
     populateTeamSelector();
 }
 
@@ -84,58 +161,103 @@ function populateTeamSelector() {
 
     select.addEventListener("change", () => renderTeam(select.value));
 
-    // Load first team by default
     renderTeam(rosters[0].team_code);
 }
 
-function renderTeam(teamCode) {
-    const team = rosters.find(t => t.team_code === teamCode);
-    const tbody = document.querySelector("#playersTable tbody");
-    tbody.innerHTML = "";
+async function fetchStats(mlb_id, group) {
+    const url = `https://statsapi.mlb.com/api/v1/people/${mlb_id}/stats?stats=season&group=${group}`;
+    const res = await fetch(url);
+    const data = await res.json();
 
-    team.players.forEach(player => {
-        const row = document.createElement("tr");
-
-        row.innerHTML = `
-            <td>${player.name}</td>
-            <td>${player.position}</td>
-            <td>${player.mlb_id}</td>
-        `;
-
-        tbody.appendChild(row);
-    });
+    try {
+        return data.stats[0].splits[0].stat;
+    } catch {
+        return null;
+    }
 }
 
-function sortTable(column) {
-    const teamCode = document.getElementById("teamSelect").value;
+async function renderTeam(teamCode) {
     const team = rosters.find(t => t.team_code === teamCode);
 
-    if (currentSort.column === column) {
-        currentSort.asc = !currentSort.asc;
-    } else {
-        currentSort.column = column;
-        currentSort.asc = true;
-    }
+    const pitcherBody = document.querySelector("#pitcherGrid tbody");
+    const batterBody = document.querySelector("#batterGrid tbody");
 
-    team.players.sort((a, b) => {
-        let valA = a[column] ?? "";
-        let valB = b[column] ?? "";
+    pitcherBody.innerHTML = "";
+    batterBody.innerHTML = "";
 
-        if (typeof valA === "number" && typeof valB === "number") {
-            return currentSort.asc ? valA - valB : valB - valA;
+    for (const player of team.players) {
+        const isPitcher = (player.position === "Starter" || player.position === "Reliever");
+        const mlb_id = player.mlb_id;
+
+        let stats = null;
+
+        if (mlb_id !== "none" && mlb_id !== "multi") {
+            const group = isPitcher ? "pitching" : "hitting";
+            stats = await fetchStats(mlb_id, group);
         }
 
-        return currentSort.asc
-            ? String(valA).localeCompare(String(valB))
-            : String(valB).localeCompare(String(valA));
-    });
+        if (isPitcher) {
+            let ip = parseFloat(stats?.inningsPitched ?? 0);
+            let k = parseFloat(stats?.strikeOuts ?? 0);
+            let h = parseFloat(stats?.hits ?? 0);
 
-    renderTeam(teamCode);
+            let k9 = (ip > 0 ? ((k / ip) * 9).toFixed(2) : "");
+            let h9 = (ip > 0 ? ((h / ip) * 9).toFixed(2) : "");
+
+            pitcherBody.innerHTML += `
+                <tr>
+                    <td>${player.name}</td>
+                    <td>${player.position}</td>
+                    <td>${stats?.gamesStarted ?? ""}</td>
+                    <td>${stats?.inningsPitched ?? ""}</td>
+                    <td>${stats?.wins ?? ""}</td>
+                    <td>${stats?.losses ?? ""}</td>
+                    <td>${stats?.completeGames ?? ""}</td>
+                    <td>${stats?.shutouts ?? ""}</td>
+                    <td>${stats?.saves ?? ""}</td>
+                    <td>${stats?.homeRuns ?? ""}</td>
+                    <td>${stats?.baseOnBalls ?? ""}</td>
+                    <td>${stats?.strikeOuts ?? ""}</td>
+                    <td>${stats?.era ?? ""}</td>
+                    <td>${stats?.whip ?? ""}</td>
+                    <td>${k9}</td>
+                    <td>${h9}</td>
+                </tr>
+            `;
+        } else {
+            // Map long positions → short codes
+            const posShort = {
+                "Catcher": "C",
+                "Designated Hitter": "DH",
+                "Infielders": "IF",
+                "Outfielders": "OF"
+            }[player.position] ?? player.position;
+
+            batterBody.innerHTML += `
+                <tr>
+                    <td>${player.name}</td>
+                    <td>${posShort}</td>
+                    <td>${stats?.plateAppearances ?? ""}</td>
+                    <td>${stats?.atBats ?? ""}</td>
+                    <td>${stats?.hits ?? ""}</td>
+                    <td>${stats?.doubles ?? ""}</td>
+                    <td>${stats?.triples ?? ""}</td>
+                    <td>${stats?.homeRuns ?? ""}</td>
+                    <td>${stats?.runs ?? ""}</td>
+                    <td>${stats?.rbi ?? ""}</td>
+                    <td>${stats?.stolenBases ?? ""}</td>
+                    <td>${stats?.caughtStealing ?? ""}</td>
+                    <td>${stats?.baseOnBalls ?? ""}</td>
+                    <td>${stats?.strikeOuts ?? ""}</td>
+                    <td>${stats?.groundIntoDoublePlay ?? ""}</td>
+                    <td>${stats?.obp ?? ""}</td>
+                    <td>${stats?.slg ?? ""}</td>
+                    <td>${stats?.ops ?? ""}</td>
+                </tr>
+            `;
+        }
+    }
 }
-
-document.querySelectorAll("th").forEach(th => {
-    th.addEventListener("click", () => sortTable(th.dataset.sort));
-});
 
 loadRosters();
 </script>
