@@ -131,6 +131,27 @@
     #teamSelect:focus {
         background-image: none;
     }
+
+    .spinner-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    .spinner {
+        border: 4px solid #ddd;
+        border-top: 4px solid #004687;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
 </style>
 </head>
 <body>
@@ -145,8 +166,12 @@
     <button data-mode="last7">Last 7 Days</button>
 </div>
 
+<div id="loadingSpinner" class="spinner-container" style="display:none;">
+    <div class="spinner"></div>
+</div>
+
 <!-- PITCHER GRID -->
-<h2>Pitchers</h2>
+<h2 id="pitchersHeader">Pitchers</h2>
 <table id="pitcherGrid">
     <thead>
         <tr>
@@ -173,7 +198,7 @@
 </table>
 
 <!-- BATTER GRID -->
-<h2>Batters</h2>
+<h2 id="battersHeader">Batters</h2>
 <table id="batterGrid">
     <thead>
         <tr>
@@ -203,6 +228,30 @@
 
 <script>
 let rosters = [];
+
+function showSpinner() {
+    document.getElementById("loadingSpinner").style.display = "flex";
+
+    // Hide grids
+    document.getElementById("pitcherGrid").style.display = "none";
+    document.getElementById("batterGrid").style.display = "none";
+
+    // Hide headers
+    document.getElementById("pitchersHeader").style.display = "none";
+    document.getElementById("battersHeader").style.display = "none";
+}
+
+function hideSpinner() {
+    document.getElementById("loadingSpinner").style.display = "none";
+
+    // Show grids
+    document.getElementById("pitcherGrid").style.display = "table";
+    document.getElementById("batterGrid").style.display = "table";
+
+    // Show headers
+    document.getElementById("pitchersHeader").style.display = "block";
+    document.getElementById("battersHeader").style.display = "block";
+}
 
 async function loadRosters() {
     const response = await fetch("tools/rosters.json");
@@ -271,79 +320,88 @@ async function loadStatsForTeam(teamCode, mode) {
     pitcherBody.innerHTML = "";
     batterBody.innerHTML = "";
 
-    for (const player of team.players) {
-        const isPitcher = (player.position === "Starter" || player.position === "Reliever");
-        const mlb_id = player.mlb_id;
+    showSpinner();
+    try {
+        for (const player of team.players) {
+            const isPitcher = (player.position === "Starter" || player.position === "Reliever");
+            const mlb_id = player.mlb_id;
 
-        let stats = null;
+            let stats = null;
 
-        if (mlb_id !== "none" && mlb_id !== "multi") {
-            stats = await fetchStats(mlb_id, isPitcher ? "pitching" : "hitting", mode);
-            stats = isPitcher ? normalizePitchingStats(stats) : normalizeHittingStats(stats);
+            if (mlb_id !== "none" && mlb_id !== "multi") {
+                stats = await fetchStats(mlb_id, isPitcher ? "pitching" : "hitting", mode);
+                stats = isPitcher ? normalizePitchingStats(stats) : normalizeHittingStats(stats);
+            }
+
+            if (isPitcher) {
+                // compute K/9, H/9
+                let ip = parseFloat(stats?.inningsPitched ?? 0);
+                let k = parseFloat(stats?.strikeOuts ?? 0);
+                let h = parseFloat(stats?.hits ?? 0);
+
+                let k9 = (ip > 0 ? ((k / ip) * 9).toFixed(2) : "");
+                let h9 = (ip > 0 ? ((h / ip) * 9).toFixed(2) : "");
+
+                pitcherBody.innerHTML += `
+                    <tr>
+                        <td>${player.name}</td>
+                        <td>${player.position}</td>
+                        <td>${stats?.gamesPlayed ?? ""}</td>
+                        <td>${stats?.gamesStarted ?? ""}</td>
+                        <td>${formatIP(stats?.inningsPitched)}</td>
+                        <td>${stats?.wins ?? ""}</td>
+                        <td>${stats?.losses ?? ""}</td>
+                        <td>${stats?.completeGames ?? ""}</td>
+                        <td>${stats?.shutouts ?? ""}</td>
+                        <td>${stats?.saves ?? ""}</td>
+                        <td>${stats?.homeRuns ?? ""}</td>
+                        <td>${stats?.baseOnBalls ?? ""}</td>
+                        <td>${stats?.strikeOuts ?? ""}</td>
+                        <td>${stats?.era ?? ""}</td>
+                        <td>${stats?.whip ?? ""}</td>
+                        <td>${k9}</td>
+                        <td>${h9}</td>
+                    </tr>
+                `;
+            } else {
+                const posShort = {
+                    "Catcher": "C",
+                    "Designated Hitter": "DH",
+                    "Infielders": "IF",
+                    "Outfielders": "OF"
+                }[player.position] ?? player.position;
+
+                batterBody.innerHTML += `
+                    <tr>
+                        <td>${player.name}</td>
+                        <td>${posShort}</td>
+                        <td>${stats?.plateAppearances ?? ""}</td>
+                        <td>${stats?.atBats ?? ""}</td>
+                        <td>${stats?.hits ?? ""}</td>
+                        <td>${stats?.doubles ?? ""}</td>
+                        <td>${stats?.triples ?? ""}</td>
+                        <td>${stats?.homeRuns ?? ""}</td>
+                        <td>${stats?.runs ?? ""}</td>
+                        <td>${stats?.rbi ?? ""}</td>
+                        <td>${stats?.stolenBases ?? ""}</td>
+                        <td>${stats?.caughtStealing ?? ""}</td>
+                        <td>${stats?.baseOnBalls ?? ""}</td>
+                        <td>${stats?.strikeOuts ?? ""}</td>
+                        <td>${stats?.groundIntoDoublePlay ?? ""}</td>
+                        <td>${stats?.avg ?? ""}</td>
+                        <td>${stats?.obp ?? ""}</td>
+                        <td>${stats?.slg ?? ""}</td>
+                        <td>${stats?.ops ?? ""}</td>
+                    </tr>
+                `;
+            }
         }
-
-        if (isPitcher) {
-            // compute K/9, H/9
-            let ip = parseFloat(stats?.inningsPitched ?? 0);
-            let k = parseFloat(stats?.strikeOuts ?? 0);
-            let h = parseFloat(stats?.hits ?? 0);
-
-            let k9 = (ip > 0 ? ((k / ip) * 9).toFixed(2) : "");
-            let h9 = (ip > 0 ? ((h / ip) * 9).toFixed(2) : "");
-
-            pitcherBody.innerHTML += `
-                <tr>
-                    <td>${player.name}</td>
-                    <td>${player.position}</td>
-                    <td>${stats?.gamesPlayed ?? ""}</td>
-                    <td>${stats?.gamesStarted ?? ""}</td>
-                    <td>${formatIP(stats?.inningsPitched)}</td>
-                    <td>${stats?.wins ?? ""}</td>
-                    <td>${stats?.losses ?? ""}</td>
-                    <td>${stats?.completeGames ?? ""}</td>
-                    <td>${stats?.shutouts ?? ""}</td>
-                    <td>${stats?.saves ?? ""}</td>
-                    <td>${stats?.homeRuns ?? ""}</td>
-                    <td>${stats?.baseOnBalls ?? ""}</td>
-                    <td>${stats?.strikeOuts ?? ""}</td>
-                    <td>${stats?.era ?? ""}</td>
-                    <td>${stats?.whip ?? ""}</td>
-                    <td>${k9}</td>
-                    <td>${h9}</td>
-                </tr>
-            `;
-        } else {
-            const posShort = {
-                "Catcher": "C",
-                "Designated Hitter": "DH",
-                "Infielders": "IF",
-                "Outfielders": "OF"
-            }[player.position] ?? player.position;
-
-            batterBody.innerHTML += `
-                <tr>
-                    <td>${player.name}</td>
-                    <td>${posShort}</td>
-                    <td>${stats?.plateAppearances ?? ""}</td>
-                    <td>${stats?.atBats ?? ""}</td>
-                    <td>${stats?.hits ?? ""}</td>
-                    <td>${stats?.doubles ?? ""}</td>
-                    <td>${stats?.triples ?? ""}</td>
-                    <td>${stats?.homeRuns ?? ""}</td>
-                    <td>${stats?.runs ?? ""}</td>
-                    <td>${stats?.rbi ?? ""}</td>
-                    <td>${stats?.stolenBases ?? ""}</td>
-                    <td>${stats?.caughtStealing ?? ""}</td>
-                    <td>${stats?.baseOnBalls ?? ""}</td>
-                    <td>${stats?.strikeOuts ?? ""}</td>
-                    <td>${stats?.groundIntoDoublePlay ?? ""}</td>
-                    <td>${stats?.avg ?? ""}</td>
-                    <td>${stats?.obp ?? ""}</td>
-                    <td>${stats?.slg ?? ""}</td>
-                    <td>${stats?.ops ?? ""}</td>
-                </tr>
-            `;
-        }
+    }
+    catch (err) {
+        console.error("Stats load failed:", err);
+    }
+    finally {
+        hideSpinner();
     }
 }
 
@@ -441,6 +499,21 @@ async function fetchStats(mlb_id, group, mode) {
     }
 }
 
+function fmtAvg(value) {
+    if (!isFinite(value)) return ".000";
+
+    const num = Number(value);
+    let s = num.toFixed(3);
+
+    // MLB style: .345 instead of 0.345
+    if (num === 0) return ".000";
+    if (num > 0 && num < 1) {
+        s = s.replace(/^0/, "");
+    }
+
+    return s;
+}
+
 function normalizeHittingStats(stats) {
     if (!stats) return stats;
 
@@ -453,34 +526,24 @@ function normalizeHittingStats(stats) {
     const hbp = parseFloat(stats.hitByPitch ?? 0);
     const sf = parseFloat(stats.sacFlies ?? 0);
 
-    const fmtRate = v => {
-        if (!isFinite(v)) return "";
-
-        let s = v.toFixed(3);
-
-        if (v === 0) return ".000";
-        if (v > 0 && v < 1) return s.replace(/^0/, "");
-        return s;
-    };
-
     if (ab > 0) {
-        stats.avg = fmtRate(h / ab);
+        stats.avg = fmtAvg(h / ab);
     }
 
     const obpDen = ab + bb + hbp + sf;
     if (obpDen > 0) {
-        stats.obp = fmtRate((h + bb + hbp) / obpDen);
+        stats.obp = fmtAvg((h + bb + hbp) / obpDen);
     }
 
     const totalBases = h + doubles + (2 * triples) + (3 * hr);
     if (ab > 0) {
-        stats.slg = fmtRate(totalBases / ab);
+        stats.slg = fmtAvg(totalBases / ab);
     }
 
     if (stats.obp && stats.slg) {
         const obpNum = parseFloat(stats.obp);
         const slgNum = parseFloat(stats.slg);
-        stats.ops = fmtRate(obpNum + slgNum);
+        stats.ops = fmtAvg(obpNum + slgNum);
     }
 
     return stats;
