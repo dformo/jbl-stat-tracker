@@ -257,12 +257,10 @@ async function loadRosters() {
     const response = await fetch("tools/rosters.json");
     rosters = (await response.json()).teams;
 
+    // Load team selector and grids with roster-only data
     populateTeamSelector();
 
-    // Load grids with roster-only data (blank stats)
-        renderTeamRosterOnly(rosters[0].team_code);
-
-    // No mode selected yet
+    // No stats selected yet - saves api calls
 }
 
 function renderTeamRosterOnly(teamCode) {
@@ -407,6 +405,7 @@ async function loadStatsForTeam(teamCode, mode) {
 
 function populateTeamSelector() {
     const select = document.getElementById("teamSelect");
+    const savedTeam = localStorage.getItem("selectedTeam");
 
     rosters.forEach(team => {
         const option = document.createElement("option");
@@ -415,7 +414,26 @@ function populateTeamSelector() {
         select.appendChild(option);
     });
 
+    if (savedTeam && rosters.some(t => t.team_code === savedTeam)) {
+        select.value = savedTeam;
+
+        // Load roster-only view
+        renderTeamRosterOnly(savedTeam);
+
+        // Clear mode buttons
+        document.querySelectorAll("#modeButtons button")
+            .forEach(b => b.classList.remove("active"));
+
+        resetSortIndicators();
+    } else {
+        // Default to first team
+        select.value = rosters[0].team_code;
+        renderTeamRosterOnly(rosters[0].team_code);
+    }
+
     select.addEventListener("change", () => {
+        localStorage.setItem("selectedTeam", select.value);
+
         // Clear mode buttons
         document.querySelectorAll("#modeButtons button").forEach(b => b.classList.remove("active"));
 
