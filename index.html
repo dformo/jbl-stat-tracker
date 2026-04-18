@@ -265,9 +265,28 @@ function hideSpinner() {
     document.getElementById("battersHeader").style.display = "block";
 }
 
+function hideFooters() {
+    const batterFooter = document.getElementById("batterFooter");
+    const pitcherFooter = document.getElementById("pitcherFooter");
+
+    if (batterFooter) batterFooter.style.display = "none";
+    if (pitcherFooter) pitcherFooter.style.display = "none";
+}
+
+function showFooters() {
+    const batterFooter = document.getElementById("batterFooter");
+    const pitcherFooter = document.getElementById("pitcherFooter");
+
+    if (batterFooter) batterFooter.style.display = "table-footer-group";
+    if (pitcherFooter) pitcherFooter.style.display = "table-footer-group";
+}
+
 async function loadRosters() {
     const response = await fetch("tools/rosters.json");
     rosters = (await response.json()).teams;
+
+    // Hide footers
+    hideFooters();
 
     // Load team selector and grids with roster-only data
     populateTeamSelector();
@@ -527,6 +546,7 @@ async function loadStatsForTeam(teamCode, mode) {
     }
     finally {
         hideSpinner();
+        showFooters();
     }
 }
 
@@ -566,6 +586,9 @@ function populateTeamSelector() {
 
         // Reset sort arrows
         resetSortIndicators();
+
+        // Hide footers
+        hideFooters();
 
         // Load blank roster-only grids
         renderTeamRosterOnly(select.value);
