@@ -368,21 +368,21 @@ async function loadStatsForTeam(teamCode, mode) {
                     <tr>
                         <td>${player.name}</td>
                         <td>${player.position}</td>
-                        <td>${stats?.gamesPlayed ?? ""}</td>
-                        <td>${stats?.gamesStarted ?? ""}</td>
+                        <td>${stats?.gamesPlayed ?? "-"}</td>
+                        <td>${stats?.gamesStarted ?? "-"}</td>
                         <td>${formatIP(stats?.inningsPitched)}</td>
-                        <td>${stats?.wins ?? ""}</td>
-                        <td>${stats?.losses ?? ""}</td>
-                        <td>${stats?.completeGames ?? ""}</td>
-                        <td>${stats?.shutouts ?? ""}</td>
-                        <td>${stats?.saves ?? ""}</td>
-                        <td>${stats?.homeRuns ?? ""}</td>
-                        <td>${stats?.baseOnBalls ?? ""}</td>
-                        <td>${stats?.strikeOuts ?? ""}</td>
-                        <td>${stats?.era ?? ""}</td>
-                        <td>${stats?.whip ?? ""}</td>
-                        <td>${k9}</td>
-                        <td>${h9}</td>
+                        <td>${stats?.wins ?? "-"}</td>
+                        <td>${stats?.losses ?? "-"}</td>
+                        <td>${stats?.completeGames ?? "-"}</td>
+                        <td>${stats?.shutouts ?? "-"}</td>
+                        <td>${stats?.saves ?? "-"}</td>
+                        <td>${stats?.homeRuns ?? "-"}</td>
+                        <td>${stats?.baseOnBalls ?? "-"}</td>
+                        <td>${stats?.strikeOuts ?? "-"}</td>
+                        <td>${stats?.era ?? "-"}</td>
+                        <td>${stats?.whip ?? "-"}</td>
+                        <td>${k9 === "" ? "-" : k9}</td>
+                        <td>${h9 === "" ? "-" : h9}</td>
                     </tr>
                 `;
 
@@ -417,23 +417,23 @@ async function loadStatsForTeam(teamCode, mode) {
                     <tr>
                         <td>${player.name}</td>
                         <td>${posShort}</td>
-                        <td>${stats?.plateAppearances ?? ""}</td>
-                        <td>${stats?.atBats ?? ""}</td>
-                        <td>${stats?.hits ?? ""}</td>
-                        <td>${stats?.doubles ?? ""}</td>
-                        <td>${stats?.triples ?? ""}</td>
-                        <td>${stats?.homeRuns ?? ""}</td>
-                        <td>${stats?.runs ?? ""}</td>
-                        <td>${stats?.rbi ?? ""}</td>
-                        <td>${stats?.stolenBases ?? ""}</td>
-                        <td>${stats?.caughtStealing ?? ""}</td>
-                        <td>${stats?.baseOnBalls ?? ""}</td>
-                        <td>${stats?.strikeOuts ?? ""}</td>
-                        <td>${stats?.groundIntoDoublePlay ?? ""}</td>
-                        <td>${stats?.avg ?? ""}</td>
-                        <td>${stats?.obp ?? ""}</td>
-                        <td>${stats?.slg ?? ""}</td>
-                        <td>${stats?.ops ?? ""}</td>
+                        <td>${stats?.plateAppearances ?? "-"}</td>
+                        <td>${stats?.atBats ?? "-"}</td>
+                        <td>${stats?.hits ?? "-"}</td>
+                        <td>${stats?.doubles ?? "-"}</td>
+                        <td>${stats?.triples ?? "-"}</td>
+                        <td>${stats?.homeRuns ?? "-"}</td>
+                        <td>${stats?.runs ?? "-"}</td>
+                        <td>${stats?.rbi ?? "-"}</td>
+                        <td>${stats?.stolenBases ?? "-"}</td>
+                        <td>${stats?.caughtStealing ?? "-"}</td>
+                        <td>${stats?.baseOnBalls ?? "-"}</td>
+                        <td>${stats?.strikeOuts ?? "-"}</td>
+                        <td>${stats?.groundIntoDoublePlay ?? "-"}</td>
+                        <td>${stats?.avg ?? "-"}</td>
+                        <td>${stats?.obp ?? "-"}</td>
+                        <td>${stats?.slg ?? "-"}</td>
+                        <td>${stats?.ops ?? "-"}</td>
                     </tr>
                 `;
 
@@ -480,23 +480,23 @@ async function loadStatsForTeam(teamCode, mode) {
         <tr class="totals-row">
             <td></td>
             <td></td>
-            <td>${battingTotals?.plateAppearances ?? ""}</td>
-            <td>${battingTotals?.atBats ?? ""}</td>
-            <td>${battingTotals?.hits ?? ""}</td>
-            <td>${battingTotals?.doubles ?? ""}</td>
-            <td>${battingTotals?.triples ?? ""}</td>
-            <td>${battingTotals?.homeRuns ?? ""}</td>
-            <td>${battingTotals?.runs ?? ""}</td>
-            <td>${battingTotals?.rbi ?? ""}</td>
-            <td>${battingTotals?.stolenBases ?? ""}</td>
-            <td>${battingTotals?.caughtStealing ?? ""}</td>
-            <td>${battingTotals?.baseOnBalls ?? ""}</td>
-            <td>${battingTotals?.strikeOuts ?? ""}</td>
-            <td>${battingTotals?.groundIntoDoublePlay ?? ""}</td>
-            <td>${battingTotals?.avg ?? ""}</td>
-            <td>${battingTotals?.obp ?? ""}</td>
-            <td>${battingTotals?.slg ?? ""}</td>
-            <td>${battingTotals?.ops ?? ""}</td>
+            <td>${battingTotals?.plateAppearances ?? "-"}</td>
+            <td>${battingTotals?.atBats ?? "-"}</td>
+            <td>${battingTotals?.hits ?? "-"}</td>
+            <td>${battingTotals?.doubles ?? "-"}</td>
+            <td>${battingTotals?.triples ?? "-"}</td>
+            <td>${battingTotals?.homeRuns ?? "-"}</td>
+            <td>${battingTotals?.runs ?? "-"}</td>
+            <td>${battingTotals?.rbi ?? "-"}</td>
+            <td>${battingTotals?.stolenBases ?? "-"}</td>
+            <td>${battingTotals?.caughtStealing ?? "-"}</td>
+            <td>${battingTotals?.baseOnBalls ?? "-"}</td>
+            <td>${battingTotals?.strikeOuts ?? "-"}</td>
+            <td>${battingTotals?.groundIntoDoublePlay ?? "-"}</td>
+            <td>${battingTotals?.avg ?? "-"}</td>
+            <td>${battingTotals?.obp ?? "-"}</td>
+            <td>${battingTotals?.slg ?? "-"}</td>
+            <td>${battingTotals?.ops ?? "-"}</td>
         </tr>
         `;
 
@@ -504,21 +504,21 @@ async function loadStatsForTeam(teamCode, mode) {
         <tr class="totals-row">
             <td></td>
             <td></td>
-            <td>${pitchingTotals?.gamesPlayed ?? ""}</td>
-            <td>${pitchingTotals?.gamesStarted ?? ""}</td>
-            <td>${formatIP(pitchingTotals?.inningsPitched)}</td>
-            <td>${pitchingTotals?.wins ?? ""}</td>
-            <td>${pitchingTotals?.losses ?? ""}</td>
-            <td>${pitchingTotals?.completeGames ?? ""}</td>
-            <td>${pitchingTotals?.shutouts ?? ""}</td>
-            <td>${pitchingTotals?.saves ?? ""}</td>
-            <td>${pitchingTotals?.homeRuns ?? ""}</td>
-            <td>${pitchingTotals?.baseOnBalls ?? ""}</td>
-            <td>${pitchingTotals?.strikeOuts ?? ""}</td>
-            <td>${pitchingTotals?.era ?? ""}</td>
-            <td>${pitchingTotals?.whip ?? ""}</td>
-            <td>${pitchingTotals?.k9 ?? ""}</td>
-            <td>${pitchingTotals?.h9 ?? ""}</td>
+            <td>${pitchingTotals?.gamesPlayed ?? "-"}</td>
+            <td>${pitchingTotals?.gamesStarted ?? "-"}</td>
+            <td>${pitchingTotals?.inningsPitched > 0 ? formatIP(pitchingTotals.inningsPitched) : "0.0"}</td>
+            <td>${pitchingTotals?.wins ?? "-"}</td>
+            <td>${pitchingTotals?.losses ?? "-"}</td>
+            <td>${pitchingTotals?.completeGames ?? "-"}</td>
+            <td>${pitchingTotals?.shutouts ?? "-"}</td>
+            <td>${pitchingTotals?.saves ?? "-"}</td>
+            <td>${pitchingTotals?.homeRuns ?? "-"}</td>
+            <td>${pitchingTotals?.baseOnBalls ?? "-"}</td>
+            <td>${pitchingTotals?.strikeOuts ?? "-"}</td>
+            <td>${pitchingTotals?.era ?? "-"}</td>
+            <td>${pitchingTotals?.whip ?? "-"}</td>
+            <td>${pitchingTotals?.k9 ?? "-"}</td>
+            <td>${pitchingTotals?.h9 ?? "-"}</td>
         </tr>
         `;
     }
@@ -727,7 +727,7 @@ function normalizePitchingStats(stats) {
 }
 
 function formatIP(ipRaw) {
-    if (!ipRaw) return "";
+    if (!ipRaw) return "-";
 
     // Convert to number safely
     let ip = parseFloat(ipRaw);
