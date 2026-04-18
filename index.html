@@ -367,8 +367,6 @@ function populateTeamSelector() {
         // Load blank roster-only grids
         renderTeamRosterOnly(select.value);
     });
-
-    renderTeam(rosters[0].team_code);
 }
 
 async function fetchStats(mlb_id, group, mode) {
@@ -531,88 +529,6 @@ function formatIP(ipRaw) {
 
     // Always show one decimal place
     return rounded.toFixed(1);
-}
-
-async function renderTeam(teamCode) {
-    const team = rosters.find(t => t.team_code === teamCode);
-
-    const pitcherBody = document.querySelector("#pitcherGrid tbody");
-    const batterBody = document.querySelector("#batterGrid tbody");
-
-    pitcherBody.innerHTML = "";
-    batterBody.innerHTML = "";
-
-    for (const player of team.players) {
-        const isPitcher = (player.position === "Starter" || player.position === "Reliever");
-        const mlb_id = player.mlb_id;
-
-        let stats = null;
-
-        if (mlb_id !== "none" && mlb_id !== "multi") {
-            const group = isPitcher ? "pitching" : "hitting";
-            stats = await fetchStats(mlb_id, group);
-            stats = isPitcher ? normalizePitchingStats(stats) : normalizeHittingStats(stats);
-        }
-
-        if (isPitcher) {
-            let ip = stats?.inningsPitched ?? "";
-            let k9 = stats?.k9 ?? "";
-            let h9 = stats?.h9 ?? "";
-
-            pitcherBody.innerHTML += `
-                <tr>
-                    <td>${player.name}</td>
-                    <td>${player.position}</td>
-                    <td>${stats?.gamesStarted ?? ""}</td>
-                    <td>${ip}</td>
-                    <td>${stats?.wins ?? ""}</td>
-                    <td>${stats?.losses ?? ""}</td>
-                    <td>${stats?.completeGames ?? ""}</td>
-                    <td>${stats?.shutouts ?? ""}</td>
-                    <td>${stats?.saves ?? ""}</td>
-                    <td>${stats?.homeRuns ?? ""}</td>
-                    <td>${stats?.baseOnBalls ?? ""}</td>
-                    <td>${stats?.strikeOuts ?? ""}</td>
-                    <td>${stats?.era ?? ""}</td>
-                    <td>${stats?.whip ?? ""}</td>
-                    <td>${k9}</td>
-                    <td>${h9}</td>
-                </tr>
-            `;
-
-        } else {
-            // Map long positions → short codes
-            const posShort = {
-                "Catcher": "C",
-                "Designated Hitter": "DH",
-                "Infielders": "IF",
-                "Outfielders": "OF"
-            }[player.position] ?? player.position;
-
-            batterBody.innerHTML += `
-                <tr>
-                    <td>${player.name}</td>
-                    <td>${posShort}</td>
-                    <td>${stats?.plateAppearances ?? ""}</td>
-                    <td>${stats?.atBats ?? ""}</td>
-                    <td>${stats?.hits ?? ""}</td>
-                    <td>${stats?.doubles ?? ""}</td>
-                    <td>${stats?.triples ?? ""}</td>
-                    <td>${stats?.homeRuns ?? ""}</td>
-                    <td>${stats?.runs ?? ""}</td>
-                    <td>${stats?.rbi ?? ""}</td>
-                    <td>${stats?.stolenBases ?? ""}</td>
-                    <td>${stats?.caughtStealing ?? ""}</td>
-                    <td>${stats?.baseOnBalls ?? ""}</td>
-                    <td>${stats?.strikeOuts ?? ""}</td>
-                    <td>${stats?.groundIntoDoublePlay ?? ""}</td>
-                    <td>${stats?.obp ?? ""}</td>
-                    <td>${stats?.slg ?? ""}</td>
-                    <td>${stats?.ops ?? ""}</td>
-                </tr>
-            `;
-        }
-    }
 }
 
 document.querySelectorAll("#modeButtons button").forEach(btn => {
