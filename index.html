@@ -120,6 +120,12 @@
         opacity: 0.6;
     }
 
+    tfoot tr {
+        background: #e8f1ff;
+        font-weight: bold;
+        border-top: 2px solid #c5d8ff;
+    }
+
     #teamSelect {
         -webkit-appearance: none;  /* Chrome, Safari */
         -moz-appearance: none;     /* Firefox */
@@ -195,6 +201,9 @@
         </tr>
     </thead>
     <tbody></tbody>
+    <tfoot id="pitcherFooter">
+        <tr class="totals-row"></tr>
+    </tfoot>
 </table>
 
 <!-- BATTER GRID -->
@@ -224,6 +233,9 @@
         </tr>
     </thead>
     <tbody></tbody>
+    <tfoot id="batterFooter">
+        <tr class="totals-row"></tr>
+    </tfoot>
 </table>
 
 <script>
@@ -318,6 +330,18 @@ async function loadStatsForTeam(teamCode, mode) {
     pitcherBody.innerHTML = "";
     batterBody.innerHTML = "";
 
+    let battingTotals = {
+        plateAppearances: 0, atBats: 0, hits: 0, doubles: 0, triples: 0, homeRuns: 0, runs: 0, rbi: 0,
+        stolenBases: 0, caughtStealing: 0, baseOnBalls: 0, strikeOuts: 0, groundIntoDoublePlay: 0,
+        avg: 0, obp: 0, slg: 0, ops: 0
+    };
+    let battingRateCount = 0;
+    let pitchingTotals = {
+        gamesPlayed: 0, gamesStarted: 0, inningsPitched: 0, wins: 0, losses: 0, completeGames: 0, shutouts: 0,
+        saves: 0, homeRuns: 0, baseOnBalls: 0, strikeOuts: 0, era: 0, whip: 0, k9: 0, h9: 0
+    };
+    let pitchingRateCount = 0;
+
     showSpinner();
     try {
         for (const player of team.players) {
@@ -361,6 +385,26 @@ async function loadStatsForTeam(teamCode, mode) {
                         <td>${h9}</td>
                     </tr>
                 `;
+
+                pitchingTotals.gamesPlayed += stats?.gamesPlayed || 0;
+                pitchingTotals.gamesStarted += stats?.gamesStarted || 0;
+                pitchingTotals.inningsPitched += parseFloat(stats?.inningsPitched ?? 0);
+                pitchingTotals.wins += stats?.wins || 0;
+                pitchingTotals.losses += stats?.losses || 0;
+                pitchingTotals.completeGames += stats?.completeGames || 0;
+                pitchingTotals.shutouts += stats?.shutouts || 0;
+                pitchingTotals.saves += stats?.saves || 0;
+                pitchingTotals.homeRuns += stats?.homeRuns || 0;
+                pitchingTotals.baseOnBalls += stats?.baseOnBalls || 0;
+                pitchingTotals.strikeOuts += stats?.strikeOuts || 0;
+
+                if (stats?.era > 0) {
+                    pitchingTotals.era += parseFloat(stats?.era ?? 0);
+                    pitchingTotals.whip += parseFloat(stats?.whip ?? 0);
+                    pitchingTotals.k9 += parseFloat(ip > 0 ? ((k / ip) * 9) : 0);
+                    pitchingTotals.h9 += parseFloat(ip > 0 ? ((h / ip) * 9) : 0);
+                    pitchingRateCount++;
+                }
             } else {
                 const posShort = {
                     "Catcher": "C",
@@ -392,8 +436,91 @@ async function loadStatsForTeam(teamCode, mode) {
                         <td>${stats?.ops ?? ""}</td>
                     </tr>
                 `;
+
+                battingTotals.plateAppearances += stats?.plateAppearances || 0;
+                battingTotals.atBats += stats?.atBats || 0;
+                battingTotals.hits += stats?.hits || 0;
+                battingTotals.doubles += stats?.doubles || 0;
+                battingTotals.triples += stats?.triples || 0;
+                battingTotals.homeRuns += stats?.homeRuns || 0;
+                battingTotals.runs += stats?.runs || 0;
+                battingTotals.rbi += stats?.rbi || 0;
+                battingTotals.stolenBases += stats?.stolenBases || 0;
+                battingTotals.caughtStealing += stats?.caughtStealing || 0;
+                battingTotals.baseOnBalls += stats?.baseOnBalls || 0;
+                battingTotals.strikeOuts += stats?.strikeOuts || 0;
+                battingTotals.groundIntoDoublePlay += stats?.groundIntoDoublePlay || 0;
+
+                if (stats?.avg > 0) {
+                    battingTotals.avg += parseFloat(stats.avg ?? 0);
+                    battingTotals.obp += parseFloat(stats.obp ?? 0);
+                    battingTotals.slg += parseFloat(stats.slg ?? 0);
+                    battingTotals.ops += parseFloat(stats.ops ?? 0);
+                    battingRateCount++;
+                }
             }
         }
+
+        // Totals final calculation and grid footer display
+        if (battingRateCount > 0) {
+            battingTotals.avg = fmtAvg(battingTotals.avg / battingRateCount);
+            battingTotals.obp = fmtAvg(battingTotals.obp / battingRateCount);
+            battingTotals.slg = fmtAvg(battingTotals.slg / battingRateCount);
+            battingTotals.ops = fmtAvg(battingTotals.ops / battingRateCount);
+        }
+
+        if (pitchingRateCount > 0) {
+            pitchingTotals.era = (pitchingTotals.era / pitchingRateCount).toFixed(2);
+            pitchingTotals.whip = (pitchingTotals.whip / pitchingRateCount).toFixed(2);
+            pitchingTotals.k9 = (pitchingTotals.k9 / pitchingRateCount).toFixed(2);
+            pitchingTotals.h9 = (pitchingTotals.h9 / pitchingRateCount).toFixed(2);
+        }
+
+        document.getElementById("batterFooter").innerHTML = `
+        <tr class="totals-row">
+            <td></td>
+            <td></td>
+            <td>${battingTotals?.plateAppearances ?? ""}</td>
+            <td>${battingTotals?.atBats ?? ""}</td>
+            <td>${battingTotals?.hits ?? ""}</td>
+            <td>${battingTotals?.doubles ?? ""}</td>
+            <td>${battingTotals?.triples ?? ""}</td>
+            <td>${battingTotals?.homeRuns ?? ""}</td>
+            <td>${battingTotals?.runs ?? ""}</td>
+            <td>${battingTotals?.rbi ?? ""}</td>
+            <td>${battingTotals?.stolenBases ?? ""}</td>
+            <td>${battingTotals?.caughtStealing ?? ""}</td>
+            <td>${battingTotals?.baseOnBalls ?? ""}</td>
+            <td>${battingTotals?.strikeOuts ?? ""}</td>
+            <td>${battingTotals?.groundIntoDoublePlay ?? ""}</td>
+            <td>${battingTotals?.avg ?? ""}</td>
+            <td>${battingTotals?.obp ?? ""}</td>
+            <td>${battingTotals?.slg ?? ""}</td>
+            <td>${battingTotals?.ops ?? ""}</td>
+        </tr>
+        `;
+
+        document.getElementById("pitcherFooter").innerHTML = `
+        <tr class="totals-row">
+            <td></td>
+            <td></td>
+            <td>${pitchingTotals?.gamesPlayed ?? ""}</td>
+            <td>${pitchingTotals?.gamesStarted ?? ""}</td>
+            <td>${formatIP(pitchingTotals?.inningsPitched)}</td>
+            <td>${pitchingTotals?.wins ?? ""}</td>
+            <td>${pitchingTotals?.losses ?? ""}</td>
+            <td>${pitchingTotals?.completeGames ?? ""}</td>
+            <td>${pitchingTotals?.shutouts ?? ""}</td>
+            <td>${pitchingTotals?.saves ?? ""}</td>
+            <td>${pitchingTotals?.homeRuns ?? ""}</td>
+            <td>${pitchingTotals?.baseOnBalls ?? ""}</td>
+            <td>${pitchingTotals?.strikeOuts ?? ""}</td>
+            <td>${pitchingTotals?.era ?? ""}</td>
+            <td>${pitchingTotals?.whip ?? ""}</td>
+            <td>${pitchingTotals?.k9 ?? ""}</td>
+            <td>${pitchingTotals?.h9 ?? ""}</td>
+        </tr>
+        `;
     }
     catch (err) {
         console.error("Stats load failed:", err);
