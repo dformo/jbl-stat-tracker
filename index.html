@@ -238,6 +238,27 @@
     </tfoot>
 </table>
 
+<!-- FIELDING GRID -->
+<h2 id="fieldingHeader">Fielding</h2>
+<table id="fieldingGrid">
+    <thead>
+        <tr>
+            <th>Player</th>
+            <th>Pos</th>
+            <th>C</th>
+            <th>1B</th>
+            <th>2B</th>
+            <th>SS </th>
+            <th>3B</th>
+            <th>OF</th>
+            <th>LF</th>
+            <th>CF</th>
+            <th>RF</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
 <script>
 let rosters = [];
 
@@ -247,10 +268,12 @@ function showSpinner() {
     // Hide grids
     document.getElementById("pitcherGrid").style.display = "none";
     document.getElementById("batterGrid").style.display = "none";
+    document.getElementById("fieldingGrid").style.display = "none";
 
     // Hide headers
     document.getElementById("pitchersHeader").style.display = "none";
     document.getElementById("battersHeader").style.display = "none";
+    document.getElementById("fieldingHeader").style.display = "none";
 }
 
 function hideSpinner() {
@@ -287,6 +310,10 @@ async function loadRosters() {
 
     // Hide footers
     hideFooters();
+
+    // Hide Fielding grid
+    document.getElementById("fieldingHeader").style.display = "none";
+    document.getElementById("fieldingGrid").style.display = "none";
 
     // Load team selector and grids with roster-only data
     populateTeamSelector();
@@ -345,9 +372,11 @@ async function loadStatsForTeam(teamCode, mode) {
 
     const pitcherBody = document.querySelector("#pitcherGrid tbody");
     const batterBody = document.querySelector("#batterGrid tbody");
+    const fieldingBody = document.querySelector("#fieldingGrid tbody");
 
     pitcherBody.innerHTML = "";
     batterBody.innerHTML = "";
+    fieldingBody.innerHTML = "";
 
     let battingTotals = {
         plateAppearances: 0, atBats: 0, hits: 0, doubles: 0, triples: 0, homeRuns: 0, runs: 0, rbi: 0,
@@ -456,6 +485,28 @@ async function loadStatsForTeam(teamCode, mode) {
                     </tr>
                 `;
 
+                if (mode === "season") {
+                    const fieldingStats = await fetchStats(mlb_id, "fielding", mode);
+                    if (fieldingStats) {
+                        const fieldingRow = extractFieldingGames(fieldingStats);
+                        fieldingBody.innerHTML += `
+                            <tr>
+                                <td>${player.name}</td>
+                                <td>${posShort}</td>
+                                <td>${fieldingRow.gpC > 0 ? fieldingRow.gpC : "-"}</td>
+                                <td>${fieldingRow.gp1B > 0 ? fieldingRow.gp1B : "-"}</td>
+                                <td>${fieldingRow.gp2B > 0 ? fieldingRow.gp2B : "-"}</td>
+                                <td>${fieldingRow.gpSS > 0 ? fieldingRow.gpSS : "-"}</td>
+                                <td>${fieldingRow.gp3B > 0 ? fieldingRow.gp3B : "-"}</td>
+                                <td>${fieldingRow.gpOF > 0 ? fieldingRow.gpOF : "-"}</td>
+                                <td>${fieldingRow.gpLF > 0 ? fieldingRow.gpLF : "-"}</td>
+                                <td>${fieldingRow.gpCF > 0 ? fieldingRow.gpCF : "-"}</td>
+                                <td>${fieldingRow.gpRF > 0 ? fieldingRow.gpRF : "-"}</td>
+                            </tr>
+                        `;
+                    }
+                }
+
                 battingTotals.plateAppearances += stats?.plateAppearances || 0;
                 battingTotals.atBats += stats?.atBats || 0;
                 battingTotals.hits += stats?.hits || 0;
@@ -478,6 +529,14 @@ async function loadStatsForTeam(teamCode, mode) {
                     battingRateCount++;
                 }
             }
+        }
+
+        if (mode === "season") {
+            document.getElementById("fieldingGrid").style.display = "table";
+            document.getElementById("fieldingHeader").style.display = "block";
+        } else {
+            document.getElementById("fieldingGrid").style.display = "none";
+            document.getElementById("fieldingHeader").style.display = "none";
         }
 
         // Totals final calculation and grid footer display
@@ -608,7 +667,7 @@ async function fetchStats(mlb_id, group, mode) {
 
     try {
         if (mode === "season") {
-            return data.stats[0].splits[0].stat;
+            return group === "fielding" ? data.stats[0].splits : data.stats[0].splits[0].stat;
         }
 
         const games = data.stats[0].splits;
@@ -680,6 +739,29 @@ function fmtAvg(value) {
     }
 
     return s;
+}
+
+function extractFieldingGames(fieldingSplits) {
+    let gpC = 0, gp1B = 0, gp2B = 0, gp3B = 0, gpSS = 0, gpOF = 0, gpLF = 0, gpCF = 0, gpRF = 0;
+
+    fieldingSplits?.forEach(split => {
+        const pos = split.position?.abbreviation;
+        const gp = split.stat?.gamesPlayed || 0;
+
+        if (pos === "C") gpC += gp;
+        if (pos === "1B") gp1B += gp;
+        if (pos === "2B") gp2B += gp;
+        if (pos === "3B") gp3B += gp;
+        if (pos === "SS") gpSS += gp;
+        if (pos === "LF") gpLF += gp;
+        if (pos === "CF") gpCF += gp;
+        if (pos === "RF") gpRF += gp;
+
+        // Outfield positions
+        if (pos === "LF" || pos === "CF" || pos === "RF") gpOF += gp;
+    });
+
+    return { gpC, gp1B, gp2B, gp3B, gpSS, gpOF, gpLF, gpCF, gpRF };
 }
 
 function normalizeHittingStats(stats) {
