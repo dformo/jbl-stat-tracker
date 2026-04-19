@@ -240,19 +240,21 @@
                 <th>Role</th>
                 <th>G</th>
                 <th>GS</th>
-                <th>IP</th>
                 <th>W</th>
                 <th>L</th>
-                <th>CG</th>
-                <th>SHO</th>
                 <th>SV</th>
+                <th>IP</th>
+                <th>H</th>
+                <th>R</th>
+                <th>ER</th>
                 <th>HR</th>
                 <th>BB</th>
-                <th>K</th>
+                <th>SO</th>
                 <th>ERA</th>
                 <th>WHIP</th>
-                <th>K/9</th>
                 <th>H/9</th>
+                <th>K/9</th>
+                <th>BB/9</th>
             </tr>
         </thead>
         <tbody></tbody>
@@ -397,7 +399,7 @@ function renderTeamRosterOnly(teamCode) {
                     <td></td><td></td><td></td><td></td>
                     <td></td><td></td><td></td><td></td>
                     <td></td><td></td><td></td><td></td>
-                    <td></td><td></td>
+                    <td></td><td></td><td></td><td></td>
                 </tr>
             `;
         } else {
@@ -423,6 +425,36 @@ function renderTeamRosterOnly(teamCode) {
     }
 }
 
+function ipToOuts(ip) {
+    if (!ip) return 0;
+
+    const [whole, frac] = ip.toString().split(".").map(Number);
+
+    const innings = whole || 0;
+    const tenths = frac || 0; // 0, 1, or 2
+
+    return innings * 3 + tenths; // 1 = 1 out, 2 = 2 outs
+}
+
+function outsToIP(outs) {
+    const innings = Math.floor(outs / 3);
+    const remainder = outs % 3; // 0, 1, or 2
+
+    return `${innings}.${remainder}`;
+}
+
+function ipToRealInnings(ip) {
+    if (!ip) return 0;
+
+    const [whole, frac] = ip.toString().split(".").map(Number);
+
+    const innings = whole || 0;
+    const tenths = frac || 0; // 0, 1, 2
+
+    const outs = innings * 3 + tenths; // convert to outs
+    return outs / 3; // convert to real innings
+}
+
 async function loadStatsForTeam(teamCode, mode) {
     const team = rosters.find(t => t.team_code === teamCode);
 
@@ -436,15 +468,14 @@ async function loadStatsForTeam(teamCode, mode) {
 
     let battingTotals = {
         plateAppearances: 0, atBats: 0, hits: 0, doubles: 0, triples: 0, homeRuns: 0, runs: 0, rbi: 0,
-        stolenBases: 0, caughtStealing: 0, baseOnBalls: 0, strikeOuts: 0, groundIntoDoublePlay: 0,
+        stolenBases: 0, caughtStealing: 0, baseOnBalls: 0, strikeOuts: 0, groundIntoDoublePlay: 0, hitByPitch: 0, sacFlies: 0,
         avg: 0, obp: 0, slg: 0, ops: 0
     };
-    let battingRateCount = 0;
     let pitchingTotals = {
-        gamesPlayed: 0, gamesStarted: 0, inningsPitched: 0, wins: 0, losses: 0, completeGames: 0, shutouts: 0,
-        saves: 0, homeRuns: 0, baseOnBalls: 0, strikeOuts: 0, era: 0, whip: 0, k9: 0, h9: 0
+        gamesPlayed: 0, gamesStarted: 0, outs: 0, wins: 0, losses: 0,
+        saves: 0, runs: 0, earnedRuns: 0, hits: 0, homeRuns: 0, baseOnBalls: 0, strikeOuts: 0,
+        era: 0, whip: 0, k9: 0, h9: 0, bb9: 0
     };
-    let pitchingRateCount = 0;
 
     showSpinner();
     try {
@@ -461,12 +492,14 @@ async function loadStatsForTeam(teamCode, mode) {
 
             if (isPitcher) {
                 // compute K/9, H/9
-                let ip = parseFloat(stats?.inningsPitched ?? 0);
+                let ip = parseFloat(ipToRealInnings(stats?.inningsPitched ?? 0));
                 let k = parseFloat(stats?.strikeOuts ?? 0);
                 let h = parseFloat(stats?.hits ?? 0);
+                let bb = parseFloat(stats?.baseOnBalls ?? 0);
 
                 let k9 = (ip > 0 ? ((k / ip) * 9).toFixed(2) : "");
                 let h9 = (ip > 0 ? ((h / ip) * 9).toFixed(2) : "");
+                let bb9 = (ip > 0 ? ((bb / ip) * 9).toFixed(2) : "");
 
                 pitcherBody.innerHTML += `
                     <tr>
@@ -474,41 +507,36 @@ async function loadStatsForTeam(teamCode, mode) {
                         <td>${player.position}</td>
                         <td>${stats?.gamesPlayed ?? "-"}</td>
                         <td>${stats?.gamesStarted ?? "-"}</td>
-                        <td>${formatIP(stats?.inningsPitched)}</td>
                         <td>${stats?.wins ?? "-"}</td>
                         <td>${stats?.losses ?? "-"}</td>
-                        <td>${stats?.completeGames ?? "-"}</td>
-                        <td>${stats?.shutouts ?? "-"}</td>
                         <td>${stats?.saves ?? "-"}</td>
+                        <td>${stats?.outs > 0 ? outsToIP(stats?.outs) : "-"}</td>
+                        <td>${stats?.hits ?? "-"}</td>
+                        <td>${stats?.runs ?? "-"}</td>
+                        <td>${stats?.earnedRuns ?? "-"}</td>
                         <td>${stats?.homeRuns ?? "-"}</td>
                         <td>${stats?.baseOnBalls ?? "-"}</td>
                         <td>${stats?.strikeOuts ?? "-"}</td>
                         <td>${stats?.era ?? "-"}</td>
                         <td>${stats?.whip ?? "-"}</td>
-                        <td>${k9 === "" ? "-" : k9}</td>
                         <td>${h9 === "" ? "-" : h9}</td>
+                        <td>${k9 === "" ? "-" : k9}</td>
+                        <td>${bb9 === "" ? "-" : bb9}</td>
                     </tr>
                 `;
 
                 pitchingTotals.gamesPlayed += stats?.gamesPlayed || 0;
                 pitchingTotals.gamesStarted += stats?.gamesStarted || 0;
-                pitchingTotals.inningsPitched += parseFloat(stats?.inningsPitched ?? 0);
+                pitchingTotals.outs += stats?.outs || 0;
                 pitchingTotals.wins += stats?.wins || 0;
                 pitchingTotals.losses += stats?.losses || 0;
-                pitchingTotals.completeGames += stats?.completeGames || 0;
-                pitchingTotals.shutouts += stats?.shutouts || 0;
                 pitchingTotals.saves += stats?.saves || 0;
+                pitchingTotals.runs += stats?.runs || 0;
+                pitchingTotals.earnedRuns += stats?.earnedRuns || 0;
+                pitchingTotals.hits += stats?.hits || 0;
                 pitchingTotals.homeRuns += stats?.homeRuns || 0;
                 pitchingTotals.baseOnBalls += stats?.baseOnBalls || 0;
                 pitchingTotals.strikeOuts += stats?.strikeOuts || 0;
-
-                if (stats?.era > 0) {
-                    pitchingTotals.era += parseFloat(stats?.era ?? 0);
-                    pitchingTotals.whip += parseFloat(stats?.whip ?? 0);
-                    pitchingTotals.k9 += parseFloat(ip > 0 ? ((k / ip) * 9) : 0);
-                    pitchingTotals.h9 += parseFloat(ip > 0 ? ((h / ip) * 9) : 0);
-                    pitchingRateCount++;
-                }
             } else {
                 const posShort = {
                     "Catcher": "C",
@@ -576,14 +604,8 @@ async function loadStatsForTeam(teamCode, mode) {
                 battingTotals.baseOnBalls += stats?.baseOnBalls || 0;
                 battingTotals.strikeOuts += stats?.strikeOuts || 0;
                 battingTotals.groundIntoDoublePlay += stats?.groundIntoDoublePlay || 0;
-
-                if (stats?.avg > 0) {
-                    battingTotals.avg += parseFloat(stats.avg ?? 0);
-                    battingTotals.obp += parseFloat(stats.obp ?? 0);
-                    battingTotals.slg += parseFloat(stats.slg ?? 0);
-                    battingTotals.ops += parseFloat(stats.ops ?? 0);
-                    battingRateCount++;
-                }
+                battingTotals.hitByPitch += stats?.hitByPitch || 0;
+                battingTotals.sacFlies += stats?.sacFlies || 0;
             }
         }
 
@@ -595,19 +617,27 @@ async function loadStatsForTeam(teamCode, mode) {
             document.getElementById("fieldingHeader").style.display = "none";
         }
 
-        // Totals final calculation and grid footer display
-        if (battingRateCount > 0) {
-            battingTotals.avg = fmtAvg(battingTotals.avg / battingRateCount);
-            battingTotals.obp = fmtAvg(battingTotals.obp / battingRateCount);
-            battingTotals.slg = fmtAvg(battingTotals.slg / battingRateCount);
-            battingTotals.ops = fmtAvg(battingTotals.ops / battingRateCount);
+        // Totals calculation
+        if (battingTotals.plateAppearances > 0) {
+            if (battingTotals.atBats > 0) {
+                battingTotals.avg = (battingTotals.hits / battingTotals.atBats);
+                battingTotals.slg = ((battingTotals.hits - battingTotals.doubles - battingTotals.triples - battingTotals.homeRuns) + (battingTotals.doubles * 2) + (battingTotals.triples * 3) + (battingTotals.homeRuns * 4)) / battingTotals.atBats;
+            }
+            
+            if (battingTotals.atBats + battingTotals.baseOnBalls + battingTotals.hitByPitch + battingTotals.sacFlies) {
+                battingTotals.obp = (battingTotals.hits + battingTotals.baseOnBalls + battingTotals.hitByPitch) / (battingTotals.atBats + battingTotals.baseOnBalls + battingTotals.hitByPitch + battingTotals.sacFlies);
+            }            
+            
+            battingTotals.ops = (battingTotals.obp + battingTotals.slg);
         }
 
-        if (pitchingRateCount > 0) {
-            pitchingTotals.era = (pitchingTotals.era / pitchingRateCount).toFixed(2);
-            pitchingTotals.whip = (pitchingTotals.whip / pitchingRateCount).toFixed(2);
-            pitchingTotals.k9 = (pitchingTotals.k9 / pitchingRateCount).toFixed(2);
-            pitchingTotals.h9 = (pitchingTotals.h9 / pitchingRateCount).toFixed(2);
+        if (pitchingTotals.outs > 0) {
+            let ipTotal = parseFloat(ipToRealInnings(outsToIP(pitchingTotals?.outs ?? 0)));
+            pitchingTotals.era = (((pitchingTotals.earnedRuns ?? 0) * 9) / ipTotal).toFixed(2);
+            pitchingTotals.whip = (((pitchingTotals.baseOnBalls ?? 0) + (pitchingTotals.hits ?? 0)) / ipTotal).toFixed(2);
+            pitchingTotals.k9 = (((pitchingTotals.strikeOuts ?? 0) * 9) / ipTotal).toFixed(2);
+            pitchingTotals.h9 = (((pitchingTotals.hits ?? 0) * 9) / ipTotal).toFixed(2);
+            pitchingTotals.bb9 = (((pitchingTotals.baseOnBalls ?? 0) * 9) / ipTotal).toFixed(2);
         }
 
         document.getElementById("batterFooter").innerHTML = `
@@ -627,10 +657,10 @@ async function loadStatsForTeam(teamCode, mode) {
             <td>${battingTotals?.stolenBases ?? "-"}</td>
             <td>${battingTotals?.caughtStealing ?? "-"}</td>
             <td>${battingTotals?.groundIntoDoublePlay ?? "-"}</td>
-            <td>${battingTotals?.avg ?? "-"}</td>
-            <td>${battingTotals?.obp ?? "-"}</td>
-            <td>${battingTotals?.slg ?? "-"}</td>
-            <td>${battingTotals?.ops ?? "-"}</td>
+            <td>${fmtAvg(battingTotals?.avg) ?? "-"}</td>
+            <td>${fmtAvg(battingTotals?.obp) ?? "-"}</td>
+            <td>${fmtAvg(battingTotals?.slg) ?? "-"}</td>
+            <td>${fmtAvg(battingTotals?.ops) ?? "-"}</td>
         </tr>
         `;
 
@@ -640,19 +670,21 @@ async function loadStatsForTeam(teamCode, mode) {
             <td></td>
             <td>${pitchingTotals?.gamesPlayed ?? "-"}</td>
             <td>${pitchingTotals?.gamesStarted ?? "-"}</td>
-            <td>${pitchingTotals?.inningsPitched > 0 ? formatIP(pitchingTotals.inningsPitched) : "0.0"}</td>
             <td>${pitchingTotals?.wins ?? "-"}</td>
             <td>${pitchingTotals?.losses ?? "-"}</td>
-            <td>${pitchingTotals?.completeGames ?? "-"}</td>
-            <td>${pitchingTotals?.shutouts ?? "-"}</td>
             <td>${pitchingTotals?.saves ?? "-"}</td>
+            <td>${pitchingTotals?.outs > 0 ? outsToIP(pitchingTotals.outs) : "0.0"}</td>
+            <td>${pitchingTotals?.hits ?? "-"}</td>
+            <td>${pitchingTotals?.runs ?? "-"}</td>
+            <td>${pitchingTotals?.earnedRuns ?? "-"}</td>
             <td>${pitchingTotals?.homeRuns ?? "-"}</td>
             <td>${pitchingTotals?.baseOnBalls ?? "-"}</td>
             <td>${pitchingTotals?.strikeOuts ?? "-"}</td>
             <td>${pitchingTotals?.era ?? "-"}</td>
             <td>${pitchingTotals?.whip ?? "-"}</td>
-            <td>${pitchingTotals?.k9 ?? "-"}</td>
             <td>${pitchingTotals?.h9 ?? "-"}</td>
+            <td>${pitchingTotals?.k9 ?? "-"}</td>
+            <td>${pitchingTotals?.bb9 ?? "-"}</td>
         </tr>
         `;
     }
@@ -858,7 +890,7 @@ function normalizeHittingStats(stats) {
 function normalizePitchingStats(stats) {
     if (!stats) return stats;
 
-    const ip = parseFloat(stats.inningsPitched ?? 0);
+    const ip = parseFloat(ipToRealInnings(stats.inningsPitched ?? 0));
     const er = parseFloat(stats.earnedRuns ?? 0);
     const h  = parseFloat(stats.hits ?? 0);
     const bb = parseFloat(stats.baseOnBalls ?? 0);
@@ -885,19 +917,6 @@ function normalizePitchingStats(stats) {
     }
 
     return stats;
-}
-
-function formatIP(ipRaw) {
-    if (!ipRaw) return "-";
-
-    // Convert to number safely
-    let ip = parseFloat(ipRaw);
-
-    // Round to 1 decimal place (baseball style)
-    let rounded = Math.round(ip * 10) / 10;
-
-    // Always show one decimal place
-    return rounded.toFixed(1);
 }
 
 document.querySelectorAll("#modeButtons button").forEach(btn => {
