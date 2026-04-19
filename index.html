@@ -270,16 +270,16 @@
                 <th>Pos</th>
                 <th>PA</th>
                 <th>AB</th>
+                <th>R</th>
                 <th>H</th>
                 <th>2B</th>
                 <th>3B</th>
                 <th>HR</th>
-                <th>R</th>
                 <th>RBI</th>
-                <th>SB</th>
-                <th>CS</th>
                 <th>BB</th>
                 <th>K</th>
+                <th>SB</th>
+                <th>CS</th>
                 <th>GIDP</th>
                 <th>AVG</th>
                 <th>OBP</th>
@@ -523,16 +523,16 @@ async function loadStatsForTeam(teamCode, mode) {
                         <td>${posShort}</td>
                         <td>${stats?.plateAppearances ?? "-"}</td>
                         <td>${stats?.atBats ?? "-"}</td>
+                        <td>${stats?.runs ?? "-"}</td>
                         <td>${stats?.hits ?? "-"}</td>
                         <td>${stats?.doubles ?? "-"}</td>
                         <td>${stats?.triples ?? "-"}</td>
                         <td>${stats?.homeRuns ?? "-"}</td>
-                        <td>${stats?.runs ?? "-"}</td>
                         <td>${stats?.rbi ?? "-"}</td>
-                        <td>${stats?.stolenBases ?? "-"}</td>
-                        <td>${stats?.caughtStealing ?? "-"}</td>
                         <td>${stats?.baseOnBalls ?? "-"}</td>
                         <td>${stats?.strikeOuts ?? "-"}</td>
+                        <td>${stats?.stolenBases ?? "-"}</td>
+                        <td>${stats?.caughtStealing ?? "-"}</td>
                         <td>${stats?.groundIntoDoublePlay ?? "-"}</td>
                         <td>${stats?.avg ?? "-"}</td>
                         <td>${stats?.obp ?? "-"}</td>
