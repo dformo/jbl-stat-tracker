@@ -534,10 +534,10 @@ async function loadStatsForTeam(teamCode, mode) {
                         <td>${stats?.stolenBases ?? "-"}</td>
                         <td>${stats?.caughtStealing ?? "-"}</td>
                         <td>${stats?.groundIntoDoublePlay ?? "-"}</td>
-                        <td>${stats?.avg ?? "-"}</td>
-                        <td>${stats?.obp ?? "-"}</td>
-                        <td>${stats?.slg ?? "-"}</td>
-                        <td>${stats?.ops ?? "-"}</td>
+                        <td>${stats ? fmtAvg(stats.avg) : "-"}</td>
+                        <td>${stats ? fmtAvg(stats.obp) : "-"}</td>
+                        <td>${stats ? fmtAvg(stats.slg) : "-"}</td>
+                        <td>${stats ? fmtAvg(stats.ops) : "-"}</td>
                     </tr>
                 `;
 
@@ -791,7 +791,7 @@ function fmtAvg(value) {
     // MLB style: .345 instead of 0.345
     if (num === 0) return ".000";
     if (num > 0 && num < 1) {
-        s = s.replace(/^0/, "");
+        s = s.replace(/^0\./, ".");
     }
 
     return s;
