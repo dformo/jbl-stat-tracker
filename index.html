@@ -72,7 +72,8 @@
         border-collapse: collapse;
         background: white;
         border-radius: 6px;
-        overflow: hidden;
+        overflow-x: auto;
+        display: block;
         box-shadow: 0 2px 6px rgba(0,0,0,0.15);
         margin-bottom: 40px;
     }
@@ -81,6 +82,10 @@
         padding: 10px 12px;
         text-align: left;
         border-bottom: 1px solid #e5e5e5;
+    }
+
+    thead th, tbody td, tfoot td {
+        white-space: nowrap;
     }
 
     th {
@@ -158,106 +163,157 @@
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
     }
+
+    .app-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 12px;
+    }
+
+    thead th {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+    }
+
+    button, select {
+        min-height: 40px;
+    }
+
+    @media (max-width: 600px) {
+        h2 {
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+
+        table {
+            font-size: 0.8rem;
+        }
+
+        th, td {
+            padding: 4px 6px;
+        }
+
+        #modeButtons {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        #modeButtons button {
+            width: 100%;
+            font-size: 0.9rem;
+            padding: 8px;
+        }
+
+        select {
+            width: 100%;
+            font-size: 1rem;
+            padding: 8px;
+            margin-bottom: 12px;
+        }
+    }
 </style>
 </head>
 <body>
+<div class="app-container">
+    <h1>JBL Stat Tracker</h1>
 
-<h1>JBL Stat Tracker</h1>
+    <select id="teamSelect"></select>
+    <div id="modeButtons">
+        <button data-mode="season">Season Totals</button>
+        <button data-mode="today">Today</button>
+        <button data-mode="yesterday">Yesterday</button>
+        <button data-mode="last7">Last 7 Days</button>
+    </div>
 
-<select id="teamSelect"></select>
-<div id="modeButtons">
-    <button data-mode="season">Season Totals</button>
-    <button data-mode="today">Today</button>
-    <button data-mode="yesterday">Yesterday</button>
-    <button data-mode="last7">Last 7 Days</button>
+    <div id="loadingSpinner" class="spinner-container" style="display:none;">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- PITCHER GRID -->
+    <h2 id="pitchersHeader">Pitchers</h2>
+    <table id="pitcherGrid">
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th>Role</th>
+                <th>G</th>
+                <th>GS</th>
+                <th>IP</th>
+                <th>W</th>
+                <th>L</th>
+                <th>CG</th>
+                <th>SHO</th>
+                <th>SV</th>
+                <th>HR</th>
+                <th>BB</th>
+                <th>K</th>
+                <th>ERA</th>
+                <th>WHIP</th>
+                <th>K/9</th>
+                <th>H/9</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot id="pitcherFooter">
+            <tr class="totals-row"></tr>
+        </tfoot>
+    </table>
+
+    <!-- BATTER GRID -->
+    <h2 id="battersHeader">Batters</h2>
+    <table id="batterGrid">
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th>Pos</th>
+                <th>PA</th>
+                <th>AB</th>
+                <th>H</th>
+                <th>2B</th>
+                <th>3B</th>
+                <th>HR</th>
+                <th>R</th>
+                <th>RBI</th>
+                <th>SB</th>
+                <th>CS</th>
+                <th>BB</th>
+                <th>K</th>
+                <th>GIDP</th>
+                <th>AVG</th>
+                <th>OBP</th>
+                <th>SLG</th>
+                <th>OPS</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot id="batterFooter">
+            <tr class="totals-row"></tr>
+        </tfoot>
+    </table>
+
+    <!-- FIELDING GRID -->
+    <h2 id="fieldingHeader">Fielding</h2>
+    <table id="fieldingGrid">
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th>Pos</th>
+                <th>C</th>
+                <th>1B</th>
+                <th>2B</th>
+                <th>SS </th>
+                <th>3B</th>
+                <th>OF</th>
+                <th>LF</th>
+                <th>CF</th>
+                <th>RF</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 </div>
-
-<div id="loadingSpinner" class="spinner-container" style="display:none;">
-    <div class="spinner"></div>
-</div>
-
-<!-- PITCHER GRID -->
-<h2 id="pitchersHeader">Pitchers</h2>
-<table id="pitcherGrid">
-    <thead>
-        <tr>
-            <th>Player</th>
-            <th>Role</th>
-            <th>G</th>
-            <th>GS</th>
-            <th>IP</th>
-            <th>W</th>
-            <th>L</th>
-            <th>CG</th>
-            <th>SHO</th>
-            <th>SV</th>
-            <th>HR</th>
-            <th>BB</th>
-            <th>K</th>
-            <th>ERA</th>
-            <th>WHIP</th>
-            <th>K/9</th>
-            <th>H/9</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-    <tfoot id="pitcherFooter">
-        <tr class="totals-row"></tr>
-    </tfoot>
-</table>
-
-<!-- BATTER GRID -->
-<h2 id="battersHeader">Batters</h2>
-<table id="batterGrid">
-    <thead>
-        <tr>
-            <th>Player</th>
-            <th>Pos</th>
-            <th>PA</th>
-            <th>AB</th>
-            <th>H</th>
-            <th>2B</th>
-            <th>3B</th>
-            <th>HR</th>
-            <th>R</th>
-            <th>RBI</th>
-            <th>SB</th>
-            <th>CS</th>
-            <th>BB</th>
-            <th>K</th>
-            <th>GIDP</th>
-            <th>AVG</th>
-            <th>OBP</th>
-            <th>SLG</th>
-            <th>OPS</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-    <tfoot id="batterFooter">
-        <tr class="totals-row"></tr>
-    </tfoot>
-</table>
-
-<!-- FIELDING GRID -->
-<h2 id="fieldingHeader">Fielding</h2>
-<table id="fieldingGrid">
-    <thead>
-        <tr>
-            <th>Player</th>
-            <th>Pos</th>
-            <th>C</th>
-            <th>1B</th>
-            <th>2B</th>
-            <th>SS </th>
-            <th>3B</th>
-            <th>OF</th>
-            <th>LF</th>
-            <th>CF</th>
-            <th>RF</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
 
 <script>
 let rosters = [];
@@ -556,7 +612,7 @@ async function loadStatsForTeam(teamCode, mode) {
 
         document.getElementById("batterFooter").innerHTML = `
         <tr class="totals-row">
-            <td></td>
+            <td>Totals:</td>
             <td></td>
             <td>${battingTotals?.plateAppearances ?? "-"}</td>
             <td>${battingTotals?.atBats ?? "-"}</td>
@@ -580,7 +636,7 @@ async function loadStatsForTeam(teamCode, mode) {
 
         document.getElementById("pitcherFooter").innerHTML = `
         <tr class="totals-row">
-            <td></td>
+            <td>Totals:</td>
             <td></td>
             <td>${pitchingTotals?.gamesPlayed ?? "-"}</td>
             <td>${pitchingTotals?.gamesStarted ?? "-"}</td>
