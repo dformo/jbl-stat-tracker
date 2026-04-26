@@ -22,7 +22,7 @@ def lookup_player_id(name):
 
     # Multiple matches
     if len(people) > 1:
-        return -1
+        return [p.get("id") for p in people]
 
     # Exactly one match
     return people[0].get("id")
